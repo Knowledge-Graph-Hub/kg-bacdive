@@ -29,7 +29,8 @@ DATA_SOURCES = {
 def transform(
     input_dir: Optional[Path], output_dir: Optional[Path], sources: List[str] = None
 ) -> None:
-    """Transform based on resource and class declared in DATA_SOURCES.
+    """
+    Transform based on resource and class declared in DATA_SOURCES.
 
     Call scripts in kg_bacdive/transform/[source name]/ to
     transform each source into a graph format that
