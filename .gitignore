@@ -128,3 +128,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 data/raw/*
+
+# User added files
+kg_bacdive/transform_utils/bacdive/tmp/*.yaml
