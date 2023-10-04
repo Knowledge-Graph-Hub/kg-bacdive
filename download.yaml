@@ -23,7 +23,7 @@
 # **** ROBOT ****
 #
 -
-  url: https://github.com/ontodev/robot/releases/download/v1.8.3/robot.jar
+  url: https://github.com/ontodev/robot/releases/download/v1.9.5/robot.jar
   local_name: robot.jar
 -
   url: https://raw.githubusercontent.com/ontodev/robot/master/bin/robot 
@@ -33,20 +33,26 @@
 #
 # ENVO
 #
--
-  url: http://purl.obolibrary.org/obo/envo.json
-  local_name: envo.json
+# -
+#   url: http://purl.obolibrary.org/obo/envo.json
+#   local_name: envo.json
 #
-# HP
+# NCBITaxon
 #
 -
-  url: http://purl.obolibrary.org/obo/hp.json
-  local_name: hp.json
+  url: http://purl.obolibrary.org/obo/ncbitaxon.json
+  local_name: ncbitaxon.json
 
 # **** Data sources ****
 # ATC
 # The Anatomical Therapeutic Chemical Classification for drugs
 # Primarily for establishing hierarchical relationships of DrugCentral entries
--
-  url: https://data.bioontology.org/ontologies/ATC/download?apikey=8b5b7825-538d-40e0-9e9e-5ab9274a9aeb&download_format=csv
-  local_name: atc.csv.gz
+# -
+#   url: https://data.bioontology.org/ontologies/ATC/download?apikey=8b5b7825-538d-40e0-9e9e-5ab9274a9aeb&download_format=csv
+#   local_name: atc.csv.gz
+
+# BacDive
+# Explore Bacterial Diversity
+# -
+#   url: https://drive.google.com/open?id=1dOquB0M6H5Vxu6cBPa4kJ7F9v44medoV
+#   local_name: bacdive_strains.json
