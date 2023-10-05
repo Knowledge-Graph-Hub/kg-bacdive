@@ -8,11 +8,11 @@ from kgx.cli.cli_utils import transform
 from ..transform import Transform
 
 ONTOLOGIES = {
-    "HpTransform": "hp.json",
+    # "HpTransform": "hp.json",
     # 'GoTransform': 'go-plus.json',
-    # 'NCBITransform':  'ncbitaxon.json',
+    "NCBITransform": "ncbitaxon.json",
     # 'ChebiTransform': 'chebi.json',
-    "EnvoTransform": "envo.json",
+    # "EnvoTransform": "envo.json",
     # 'GoTransform': 'go.json'
 }
 
