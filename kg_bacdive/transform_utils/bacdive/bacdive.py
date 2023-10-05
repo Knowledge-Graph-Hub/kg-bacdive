@@ -35,7 +35,7 @@ class BacDiveTransform(Transform):
     """Template for how the transform class would be designed."""
 
     def __init__(self, input_dir: Optional[Path] = None, output_dir: Optional[Path] = None):
-        """Instantiation part."""
+        """Instantiate part."""
         source_name = "some_unique_name"
         super().__init__(source_name, input_dir, output_dir)
 
