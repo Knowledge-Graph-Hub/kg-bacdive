@@ -130,5 +130,5 @@ dmypy.json
 data/raw/*
 
 # User added files
-kg_bacdive/transform_utils/bacdive/tmp/*.yaml
+kg_bacdive/transform_utils/bacdive/tmp/yaml/*.yaml
 data/transformed/ontologies/*.tsv
