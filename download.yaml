@@ -54,5 +54,11 @@
 # BacDive
 # Explore Bacterial Diversity
 # -
-#   url: https://drive.google.com/open?id=1dOquB0M6H5Vxu6cBPa4kJ7F9v44medoV
+#   url: https://drive.google.com/uc?export=download&id=1dOquB0M6H5Vxu6cBPa4kJ7F9v44medoV
 #   local_name: bacdive_strains.json
+
+# MediaDive
+# Explore MediaDive data
+-
+  url: https://mediadive.dsmz.de/rest/media
+  local_name: mediadive.json
