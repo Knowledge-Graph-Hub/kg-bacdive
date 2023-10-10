@@ -1,0 +1,21 @@
+kg\_bacdive.utils package
+=========================
+
+Submodules
+----------
+
+kg\_bacdive.utils.robot\_utils module
+-------------------------------------
+
+.. automodule:: kg_bacdive.utils.robot_utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: kg_bacdive.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:

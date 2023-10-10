@@ -1,0 +1,32 @@
+kg\_bacdive.transform\_utils package
+====================================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   kg_bacdive.transform_utils.atc
+   kg_bacdive.transform_utils.bacdive
+   kg_bacdive.transform_utils.example_transform
+   kg_bacdive.transform_utils.ontology
+
+Submodules
+----------
+
+kg\_bacdive.transform\_utils.transform module
+---------------------------------------------
+
+.. automodule:: kg_bacdive.transform_utils.transform
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: kg_bacdive.transform_utils
+   :members:
+   :undoc-members:
+   :show-inheritance:

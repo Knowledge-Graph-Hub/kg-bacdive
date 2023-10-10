@@ -1,0 +1,55 @@
+kg\_bacdive package
+===================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   kg_bacdive.merge_utils
+   kg_bacdive.transform_utils
+   kg_bacdive.utils
+
+Submodules
+----------
+
+kg\_bacdive.download module
+---------------------------
+
+.. automodule:: kg_bacdive.download
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+kg\_bacdive.query module
+------------------------
+
+.. automodule:: kg_bacdive.query
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+kg\_bacdive.run module
+----------------------
+
+.. automodule:: kg_bacdive.run
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+kg\_bacdive.transform module
+----------------------------
+
+.. automodule:: kg_bacdive.transform
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: kg_bacdive
+   :members:
+   :undoc-members:
+   :show-inheritance:

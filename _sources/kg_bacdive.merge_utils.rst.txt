@@ -1,0 +1,21 @@
+kg\_bacdive.merge\_utils package
+================================
+
+Submodules
+----------
+
+kg\_bacdive.merge\_utils.merge\_kg module
+-----------------------------------------
+
+.. automodule:: kg_bacdive.merge_utils.merge_kg
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: kg_bacdive.merge_utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
