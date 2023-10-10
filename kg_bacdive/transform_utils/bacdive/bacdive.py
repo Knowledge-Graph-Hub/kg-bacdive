@@ -71,8 +71,10 @@ BACDIVE_PREFIX = "BACDIVE:"
 
 
 CURIE_MAP = {"DSMZ": "https://bacmedia.dsmz.de/medium/"}
-NCBI_TO_MEDIUM_EDGE = "biolink:growsIn"
-MEDIUM_TO_NCBI_EDGE = "biolink:supportsGrowth"
+NCBI_TO_MEDIUM_EDGE = "biolink:growsIn-PLACEHOLDER"
+MEDIUM_TO_NCBI_EDGE = "biolink:supportsGrowth-PLACEHOLDER"
+NCBI_CATEGORY = "biolink:IndividualOrganism"
+MEDIUM_CATEGORY = "biolink:Medium-PLACEHOLDER"
 
 BACDIVE_ID_COLUMN = "bacdive_id"
 DSM_NUMBER_COLUMN = "dsm_number"
@@ -261,7 +263,7 @@ class BacDiveTransform(Transform):
                         [[ncbitaxon_id, ncbi_description, None], [medium_id, medium_label, None]]
                     )
 
-                    edge_writer.writerows(
+                    edge_writer.writerow(
                         [
                             [
                                 ncbitaxon_id,
@@ -269,13 +271,6 @@ class BacDiveTransform(Transform):
                                 medium_id,
                                 None,
                                 BACDIVE_PREFIX + key,
-                            ],
-                            [
-                                medium_id,
-                                MEDIUM_TO_NCBI_EDGE,
-                                ncbitaxon_id,
-                                None,
-                                BACDIVE_PREFIX + key,
-                            ],
+                            ]
                         ]
                     )
