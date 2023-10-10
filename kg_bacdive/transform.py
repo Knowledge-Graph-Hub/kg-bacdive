@@ -4,12 +4,12 @@ from pathlib import Path
 from typing import List, Optional
 
 from kg_bacdive.transform_utils.bacdive import BacDiveTransform
-from kg_bacdive.transform_utils.ontology.ontology_transform import ONTOLOGIES
+from kg_bacdive.transform_utils.ontology.ontology_transform import ONTOLOGIES, OntologyTransform
 
 DATA_SOURCES = {
     # "MondoTransform": OntologyTransform,
     # "ChebiTransform": OntologyTransform,
-    # "NCBITaxonTransform": OntologyTransform,
+    "NCBITaxonTransform": OntologyTransform,
     # "ENVOTransform": OntologyTransform,
     # "GOTransform": OntologyTransform,
     # "OGMSTransform": OntologyTransform,
