@@ -7,6 +7,7 @@ import yaml
 
 
 class Transform:
+
     """Parent class for transforms, that sets up a lot of default file info."""
 
     DATA_DIR = Path(__file__).parent / "data"
@@ -26,12 +27,13 @@ class Transform:
         output_dir: Optional[Path] = None,
         nlp: bool = False,
     ):
-        """Instantiate Transform object.
+        """
+        Instantiate Transform object.
 
         :param source_name: Name of resource.
         :param input_dir: Location of input directory, defaults to None
         :param output_dir: Location of output directory, defaults to None
-        :param nlp: Boolean for possiblility of using NLP or not, defaults to False
+        :param nlp: Boolean for possibility of using NLP or not, defaults to False
         """
         # default columns, can be appended to or overwritten as necessary
         self.source_name = source_name
@@ -46,9 +48,7 @@ class Transform:
 
         # default dirs
         self.input_base_dir = Path(input_dir) if input_dir else self.DEFAULT_INPUT_DIR
-        self.output_base_dir = (
-            Path(output_dir) if output_dir else self.DEFAULT_OUTPUT_DIR
-        )
+        self.output_base_dir = Path(output_dir) if output_dir else self.DEFAULT_OUTPUT_DIR
         self.output_dir = self.output_base_dir / source_name
 
         # default filenames
@@ -60,7 +60,6 @@ class Transform:
         Path.mkdir(self.output_dir, exist_ok=True, parents=True)
 
         if nlp:
-
             self.nlp_dir = self.DEFAULT_NLP_DIR
             self.nlp_input_dir = self.DEFAULT_NLP_INPUT_DIR
             self.nlp_output_dir = self.DEFAULT_NLP_OUTPUT_DIR
@@ -90,14 +89,16 @@ class Transform:
             self.output_nlp_file = self.nlp_output_dir / "nlpOutput.tsv"
 
     def run(self, data_file: Union[Optional[Path], Optional[str]] = None):
-        """Run the transform.
+        """
+        Run the transform.
 
         :param data_file: Input data file, defaults to None
         """
         pass
 
     def pass_through(self, nodes_file: str, edges_file: str) -> None:
-        """Copy nodes and edges files to output directory.
+        """
+        Copy nodes and edges files to output directory.
 
         :param nodes_file: nodes files to take from raw directory and put in transform
                 directory

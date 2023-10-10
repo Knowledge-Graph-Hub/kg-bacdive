@@ -1,4 +1,5 @@
-"""Template design.
+"""
+Template design.
 
 Example script to transform downloaded data into a graph format that KGX can ingest directly,
 in either TSV or JSON format:
@@ -23,10 +24,11 @@ from kg_bacdive.utils.robot_utils import convert_to_json, extract_convert_to_jso
 
 
 class YourTransform(Transform):
+
     """Template for how the transform class would be designed."""
 
     def __init__(self, input_dir: Optional[Path] = None, output_dir: Optional[Path] = None):
-        """Instatiation part."""
+        """Instantiate."""
         source_name = "some_unique_name"
         super().__init__(source_name, input_dir, output_dir)
 
@@ -42,7 +44,6 @@ class YourTransform(Transform):
         with open(input_file, "r") as f, open(self.output_node_file, "w") as node, open(
             self.output_edge_file, "w"
         ) as edge:
-
             # write headers (change default node/edge headers if necessary
             node.write("\t".join(self.node_header) + "\n")
             edge.write("\t".join(self.edge_header) + "\n")

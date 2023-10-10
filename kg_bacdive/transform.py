@@ -3,15 +3,14 @@ import logging
 from pathlib import Path
 from typing import List, Optional
 
-from kg_bacdive.transform_utils.atc import ATCTransform
-from kg_bacdive.transform_utils.ontology import OntologyTransform
-from kg_bacdive.transform_utils.ontology.ontology_transform import ONTOLOGIES
+from kg_bacdive.transform_utils.bacdive import BacDiveTransform
+from kg_bacdive.transform_utils.ontology.ontology_transform import ONTOLOGIES, OntologyTransform
 
 DATA_SOURCES = {
     # "MondoTransform": OntologyTransform,
     # "ChebiTransform": OntologyTransform,
-    "HPOTransform": OntologyTransform,
-    "ENVOTransform": OntologyTransform,
+    "NCBITaxonTransform": OntologyTransform,
+    # "ENVOTransform": OntologyTransform,
     # "GOTransform": OntologyTransform,
     # "OGMSTransform": OntologyTransform,
     # "DrugCentralTransform": DrugCentralTransform,
@@ -22,14 +21,15 @@ DATA_SOURCES = {
     # "TCRDTransform": TCRDTransform,
     # "ProteinAtlasTransform": ProteinAtlasTransform,
     # "STRINGTransform": STRINGTransform,
-    "ATCTransform": ATCTransform,
+    "BacDiveTransform": BacDiveTransform,
 }
 
 
 def transform(
     input_dir: Optional[Path], output_dir: Optional[Path], sources: List[str] = None
 ) -> None:
-    """Transform based on resource and class declared in DATA_SOURCES.
+    """
+    Transform based on resource and class declared in DATA_SOURCES.
 
     Call scripts in kg_bacdive/transform/[source name]/ to
     transform each source into a graph format that

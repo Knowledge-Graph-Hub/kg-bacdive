@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+data/raw/*
+!data/raw/.keep
+
+# User added files
+kg_bacdive/transform_utils/bacdive/tmp/yaml/*.yaml
+data/transformed/ontologies/*.tsv

@@ -1,4 +1,5 @@
-"""ATC is the Anatomical Therapeutic Chemical Classification.
+"""
+ATC is the Anatomical Therapeutic Chemical Classification.
 
 We use it to categorize relationships among classes of drugs,
 with codes provided by DrugCentral.
@@ -27,10 +28,12 @@ TRANSLATION_TABLE = Path(__file__).parents[1] / "translation_table.yaml"
 
 
 class ATCTransform(Transform):
+
     """Ingests the ATC CSV file & transforms to KGX-format node and edge lists."""
 
     def __init__(self, input_dir: Optional[Path] = None, output_dir: Optional[Path] = None) -> None:
-        """Instantiate the transform.
+        """
+        Instantiate the transform.
 
         :param input_dir: Path to input directory, defaults to None
         :param output_dir: Path to output directory, defaults to None
@@ -52,7 +55,8 @@ class ATCTransform(Transform):
                 self.parse(name, data_file, k)
 
     def parse(self, name: str, data_file: Optional[Path], source: str) -> None:
-        """Transform ATC file with Koza. Need to decompress it first.
+        """
+        Transform ATC file with Koza. Need to decompress it first.
 
         :param name: Name of the resource
         :param data_file: Data file of resource.
