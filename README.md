@@ -8,8 +8,6 @@ Knowledge graph construction for BacDive data
  - `poetry install`
  - `git clone https://github.com/Knowledge-Graph-Hub/kg-bacdive.git`
  - `cd kg-bacdive`
- - Download the [BacDive JSON resource](https://drive.google.com/file/d/1dOquB0M6H5Vxu6cBPa4kJ7F9v44medoV/view?usp=share_link) and place it in the `data/raw`[data/raw/] folder named `bacdive_strains.json`
-   - TODO: make `kghub-downloader` GDrive compatible.
 
 ## Download resources needed
  - `kg download` : This will download the resources needed for this project.
