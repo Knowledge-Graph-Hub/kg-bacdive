@@ -17,10 +17,13 @@ jobs:
         python-version: 3.9
 
     - name: Install Poetry.
-      uses: snok/install-poetry@v1.3.1
+      uses: snok/install-poetry
+      with:
+        version: 1.6.1
 
     - name: Install dependencies.
       run: |
+        poetry add setuptools@latest
         poetry install --with docs
         
     - name: Build documentation.
