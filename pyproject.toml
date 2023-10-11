@@ -9,11 +9,12 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.9"
 click = "*"
-importlib-metadata = "^4.8.0"
+importlib-metadata = "^6.8.0"
 kghub-downloader = "^0.3.4"
 kgx = "*"
 koza = "*"
 biolink-model = "*"
+oaklib = "^0.5.20"
 
 [tool.poetry.group.dev.dependencies]
 pytest = {version = ">=7.1.2"}
