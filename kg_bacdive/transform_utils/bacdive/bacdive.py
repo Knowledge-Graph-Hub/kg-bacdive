@@ -20,6 +20,7 @@ import os
 import re
 from pathlib import Path
 from typing import Optional, Union
+import requests
 
 import yaml
 
@@ -30,6 +31,7 @@ from kg_bacdive.transform_utils.transform import Transform
 BACDIVE_DIR = Path(__file__).parent
 TMP_DIR = BACDIVE_DIR / "tmp"
 YAML_DIR = TMP_DIR / "yaml"
+MEDIADIVE_DIR = TMP_DIR / "mediadive"
 
 # KEYS FOR JSON FILE
 GENERAL = "General"
@@ -69,8 +71,12 @@ REF = "Reference"
 NCBITAXON_PREFIX = "NCBITaxon:"
 BACDIVE_PREFIX = "BACDIVE:"
 
+MEDIADIVE_REST_API_BASE_URL = "https://mediadive.dsmz.de/rest/"
+BACDIVE_API_BASE_URL = "https://bacmedia.dsmz.de/"
 
-CURIE_MAP = {"DSMZ": "https://bacmedia.dsmz.de/medium/"}
+MEDIUM = "/medium/"
+
+CURIE_MAP = {"DSMZ": BACDIVE_API_BASE_URL + MEDIUM}
 NCBI_TO_MEDIUM_EDGE = "biolink:growsIn-PLACEHOLDER"
 MEDIUM_TO_NCBI_EDGE = "biolink:supportsGrowth-PLACEHOLDER"
 NCBI_CATEGORY = "biolink:IndividualOrganism"
@@ -85,6 +91,8 @@ KEYWORDS_COLUMN = "keywords"
 MEDIUM_ID_COLUMN = "medium_id"
 MEDIUM_LABEL_COLUMN = "medium_label"
 MEDIUM_URL_COLUMN = "medium_url"
+MEDIADIVE_URL_COLUMN = "mediadive_medium_url"
+
 
 """
 Key-Values from JSON that need to be extracted:
@@ -123,6 +131,14 @@ class BacDiveTransform(Transform):
         source_name = "BacDive"
         super().__init__(source_name, input_dir, output_dir)
 
+    def get_mediadive_yaml(self, url: str):
+        r = requests.get(url)
+        data_yaml = yaml.dump(r.json())
+        fn = url.strip(MEDIADIVE_REST_API_BASE_URL + MEDIUM)+".yaml"
+        if not (MEDIADIVE_DIR / fn).is_file():
+            with open(str(MEDIADIVE_DIR / fn), "w") as f:
+                f.write(data_yaml)
+
     def run(self, data_file: Union[Optional[Path], Optional[str]] = None):
         """Run the transformation."""
         # replace with downloaded data filename for this source
@@ -148,6 +164,7 @@ class BacDiveTransform(Transform):
             MEDIUM_ID_COLUMN,
             MEDIUM_LABEL_COLUMN,
             MEDIUM_URL_COLUMN,
+            MEDIADIVE_URL_COLUMN,
         ]
 
         # make directory in data/transformed
@@ -221,6 +238,7 @@ class BacDiveTransform(Transform):
                 medium_id = None
                 medium_label = None
                 medium_url = None
+                mediadive_url = None
                 if CULTURE_AND_GROWTH_CONDITIONS in value and value[CULTURE_AND_GROWTH_CONDITIONS]:
                     if (
                         CULTURE_MEDIUM in value[CULTURE_AND_GROWTH_CONDITIONS]
@@ -245,6 +263,12 @@ class BacDiveTransform(Transform):
                                 CULTURE_NAME
                             ]
 
+                            mediadive_url = value[CULTURE_AND_GROWTH_CONDITIONS][CULTURE_MEDIUM][
+                                CULTURE_LINK
+                            ].replace(BACDIVE_API_BASE_URL, MEDIADIVE_REST_API_BASE_URL)
+                            if mediadive_url:
+                                self.get_mediadive_yaml(mediadive_url)
+
                 data = [
                     BACDIVE_PREFIX + key,
                     dsm_number,
@@ -255,6 +279,7 @@ class BacDiveTransform(Transform):
                     medium_id,
                     medium_label,
                     medium_url,
+                    mediadive_url,
                 ]
 
                 writer.writerow(data)  # writing the data
