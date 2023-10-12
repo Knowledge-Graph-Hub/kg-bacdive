@@ -20,8 +20,8 @@ import os
 import re
 from pathlib import Path
 from typing import Optional, Union
-import requests
 
+import requests
 import yaml
 
 from kg_bacdive.transform_utils.transform import Transform
@@ -74,7 +74,7 @@ BACDIVE_PREFIX = "BACDIVE:"
 MEDIADIVE_REST_API_BASE_URL = "https://mediadive.dsmz.de/rest/"
 BACDIVE_API_BASE_URL = "https://bacmedia.dsmz.de/"
 
-MEDIUM = "/medium/"
+MEDIUM = "medium/"
 
 CURIE_MAP = {"DSMZ": BACDIVE_API_BASE_URL + MEDIUM}
 NCBI_TO_MEDIUM_EDGE = "biolink:growsIn-PLACEHOLDER"
@@ -132,9 +132,14 @@ class BacDiveTransform(Transform):
         super().__init__(source_name, input_dir, output_dir)
 
     def get_mediadive_yaml(self, url: str):
-        r = requests.get(url)
+        """
+        Download MetaDive data using a url.
+
+        :param url: Path provided by MetaDive API.
+        """
+        r = requests.get(url, timeout=10)
         data_yaml = yaml.dump(r.json())
-        fn = url.strip(MEDIADIVE_REST_API_BASE_URL + MEDIUM)+".yaml"
+        fn = url.strip(MEDIADIVE_REST_API_BASE_URL + MEDIUM) + ".yaml"
         if not (MEDIADIVE_DIR / fn).is_file():
             with open(str(MEDIADIVE_DIR / fn), "w") as f:
                 f.write(data_yaml)
@@ -263,11 +268,11 @@ class BacDiveTransform(Transform):
                                 CULTURE_NAME
                             ]
 
-                            mediadive_url = value[CULTURE_AND_GROWTH_CONDITIONS][CULTURE_MEDIUM][
-                                CULTURE_LINK
-                            ].replace(BACDIVE_API_BASE_URL, MEDIADIVE_REST_API_BASE_URL)
-                            if mediadive_url:
-                                self.get_mediadive_yaml(mediadive_url)
+                            mediadive_url = medium_url.replace(
+                                BACDIVE_API_BASE_URL, MEDIADIVE_REST_API_BASE_URL
+                            )
+                            # if mediadive_url and not mediadive_url.endswith(".pdf"):
+                            #     self.get_mediadive_yaml(mediadive_url)
 
                 data = [
                     BACDIVE_PREFIX + key,
@@ -290,12 +295,10 @@ class BacDiveTransform(Transform):
 
                     edge_writer.writerow(
                         [
-                            [
-                                ncbitaxon_id,
-                                NCBI_TO_MEDIUM_EDGE,
-                                medium_id,
-                                None,
-                                BACDIVE_PREFIX + key,
-                            ]
+                            ncbitaxon_id,
+                            NCBI_TO_MEDIUM_EDGE,
+                            medium_id,
+                            None,
+                            BACDIVE_PREFIX + key,
                         ]
                     )
