@@ -141,6 +141,7 @@ class BacDiveTransform(Transform):
         data_yaml = yaml.dump(r.json())
         fn = url.strip(MEDIADIVE_REST_API_BASE_URL + MEDIUM) + ".yaml"
         if not (MEDIADIVE_DIR / fn).is_file():
+            print(f"Downloading {fn} ...")
             with open(str(MEDIADIVE_DIR / fn), "w") as f:
                 f.write(data_yaml)
 
@@ -271,8 +272,8 @@ class BacDiveTransform(Transform):
                             mediadive_url = medium_url.replace(
                                 BACDIVE_API_BASE_URL, MEDIADIVE_REST_API_BASE_URL
                             )
-                            # if mediadive_url and not mediadive_url.endswith(".pdf"):
-                            #     self.get_mediadive_yaml(mediadive_url)
+                            if mediadive_url and not mediadive_url.endswith(".pdf"):
+                                self.get_mediadive_yaml(mediadive_url)
 
                 data = [
                     BACDIVE_PREFIX + key,
