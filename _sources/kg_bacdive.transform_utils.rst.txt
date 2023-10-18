@@ -7,13 +7,21 @@ Subpackages
 .. toctree::
    :maxdepth: 4
 
-   kg_bacdive.transform_utils.atc
    kg_bacdive.transform_utils.bacdive
    kg_bacdive.transform_utils.example_transform
+   kg_bacdive.transform_utils.mediadive
    kg_bacdive.transform_utils.ontology
 
 Submodules
 ----------
+
+kg\_bacdive.transform\_utils.constants module
+---------------------------------------------
+
+.. automodule:: kg_bacdive.transform_utils.constants
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 kg\_bacdive.transform\_utils.transform module
 ---------------------------------------------

@@ -20,7 +20,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="kg_bacdive.transform_utils.example_transform package" href="kg_bacdive.transform_utils.example_transform.html" />
-    <link rel="prev" title="kg_bacdive.transform_utils.atc package" href="kg_bacdive.transform_utils.atc.html" /> 
+    <link rel="prev" title="kg_bacdive.transform_utils package" href="kg_bacdive.transform_utils.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -98,13 +98,10 @@
 </section>
 <section id="module-kg_bacdive.transform_utils.bacdive.bacdive">
 <span id="kg-bacdive-transform-utils-bacdive-bacdive-module"></span><h2>kg_bacdive.transform_utils.bacdive.bacdive module<a class="headerlink" href="#module-kg_bacdive.transform_utils.bacdive.bacdive" title="Link to this heading"></a></h2>
-<p>Template design.</p>
-<p>Example script to transform downloaded data into a graph format that KGX can ingest directly,
-in either TSV or JSON format:
-<a class="reference external" href="https://github.com/NCATS-Tangerine/kgx/blob/master/data-preparation.md">https://github.com/NCATS-Tangerine/kgx/blob/master/data-preparation.md</a></p>
+<p>BacDive KG.</p>
 <p>Input: any file in data/raw/ (that was downloaded by placing a URL in incoming.txt/yaml
 and running <cite>run.py download</cite>.</p>
-<p>Output: transformed data in data/raw/[source name]:</p>
+<p>Output: transformed data in data/raw/bacdive_strains.json:</p>
 <p>Output these two files:
 - nodes.tsv
 - edges.tsv</p>
@@ -114,61 +111,11 @@ and running <cite>run.py download</cite>.</p>
 <dd><p>Bases: <a class="reference internal" href="kg_bacdive.transform_utils.html#kg_bacdive.transform_utils.transform.Transform" title="kg_bacdive.transform_utils.transform.Transform"><code class="xref py py-class docutils literal notranslate"><span class="pre">Transform</span></code></a></p>
 <p>Template for how the transform class would be designed.</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="kg_bacdive.transform_utils.bacdive.bacdive.BacDiveTransform.get_mediadive_yaml">
-<span class="sig-name descname"><span class="pre">get_mediadive_yaml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kg_bacdive.transform_utils.bacdive.bacdive.BacDiveTransform.get_mediadive_yaml" title="Link to this definition"></a></dt>
-<dd><p>Download MetaDive data using a url.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>url</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – Path provided by MetaDive API.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="kg_bacdive.transform_utils.bacdive.bacdive.BacDiveTransform.run">
 <span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kg_bacdive.transform_utils.bacdive.bacdive.BacDiveTransform.run" title="Link to this definition"></a></dt>
 <dd><p>Run the transformation.</p>
 </dd></dl>
 
-</dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="kg_bacdive.transform_utils.bacdive.bacdive.MEDIADIVE_URL_COLUMN">
-<span class="sig-prename descclassname"><span class="pre">kg_bacdive.transform_utils.bacdive.bacdive.</span></span><span class="sig-name descname"><span class="pre">MEDIADIVE_URL_COLUMN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'mediadive_medium_url'</span></em><a class="headerlink" href="#kg_bacdive.transform_utils.bacdive.bacdive.MEDIADIVE_URL_COLUMN" title="Link to this definition"></a></dt>
-<dd><p>Key-Values from JSON that need to be extracted:
-- For subjects (NCBITaxon:XXXX)</p>
-<blockquote>
-<div><p>General:
-BacDive-ID:
-DSM-Number:
-NCBI tax id:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>Matching level:</p></li>
-</ul>
-<p>NCBI tax id:
-- Matching level:
-NCBI tax id:</p>
-</div></blockquote>
-<p>keywords: (List)</p>
-</div></blockquote>
-<ul class="simple">
-<li><dl class="simple">
-<dt>For predicates:</dt><dd><ul>
-<li><p>“grows in” (tentative for taxa =&gt; media)</p></li>
-<li><p>“supports growth” (tentative for media =&gt; taxa)</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><p>For objects (culture medium)</p></li>
-</ul>
-<dl class="simple">
-<dt>Culture and growth conditions:</dt><dd><p>culture medium:
-composition: (Has Name: and Composition:)
-name:</p>
-</dd>
-</dl>
 </dd></dl>
 
 </section>
@@ -180,17 +127,6 @@ name:</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kg_bacdive.transform_utils.bacdive.</span></span><span class="sig-name descname"><span class="pre">BacDiveTransform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kg_bacdive.transform_utils.bacdive.BacDiveTransform" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="kg_bacdive.transform_utils.html#kg_bacdive.transform_utils.transform.Transform" title="kg_bacdive.transform_utils.transform.Transform"><code class="xref py py-class docutils literal notranslate"><span class="pre">Transform</span></code></a></p>
 <p>Template for how the transform class would be designed.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="kg_bacdive.transform_utils.bacdive.BacDiveTransform.get_mediadive_yaml">
-<span class="sig-name descname"><span class="pre">get_mediadive_yaml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kg_bacdive.transform_utils.bacdive.BacDiveTransform.get_mediadive_yaml" title="Link to this definition"></a></dt>
-<dd><p>Download MetaDive data using a url.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>url</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – Path provided by MetaDive API.</p>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="py method">
 <dt class="sig sig-object py" id="kg_bacdive.transform_utils.bacdive.BacDiveTransform.run">
 <span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kg_bacdive.transform_utils.bacdive.BacDiveTransform.run" title="Link to this definition"></a></dt>
@@ -206,7 +142,7 @@ name:</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="kg_bacdive.transform_utils.atc.html" class="btn btn-neutral float-left" title="kg_bacdive.transform_utils.atc package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="kg_bacdive.transform_utils.html" class="btn btn-neutral float-left" title="kg_bacdive.transform_utils package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="kg_bacdive.transform_utils.example_transform.html" class="btn btn-neutral float-right" title="kg_bacdive.transform_utils.example_transform package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
