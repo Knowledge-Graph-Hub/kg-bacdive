@@ -1,17 +1,21 @@
 """Ontology transform module."""
+import gzip
+import shutil
 from pathlib import Path
 from typing import Optional, Union
 
 # from kgx.transformer import Transformer
 from kgx.cli.cli_utils import transform
 
+from kg_bacdive.utils.robot_utils import convert_to_json
+
 from ..transform import Transform
 
 ONTOLOGIES = {
     # "HpTransform": "hp.json",
     # 'GoTransform': 'go-plus.json',
-    "NCBITransform": "ncbitaxon.json",
-    # 'ChebiTransform': 'chebi.json',
+    "ncbitaxon": "ncbitaxon.json",
+    "chebi": "chebi.owl.gz",
     # "EnvoTransform": "envo.json",
     # 'GoTransform': 'go.json'
 }
@@ -52,6 +56,19 @@ class OntologyTransform(Transform):
         :param source: Source name.
         :return: None.
         """
+        if data_file.suffixes == [".owl", ".gz"]:
+            json_path = str(data_file).replace("owl.gz", "json")
+            if not Path(json_path).is_file():
+                # Unzip the file
+                print(f"Decompressing {data_file}...")
+                with gzip.open(data_file, "rb") as f_in:
+                    with open(data_file.parent / data_file.stem, "wb") as f_out:
+                        shutil.copyfileobj(f_in, f_out)
+
+                print(f"Converting {data_file} to obojson...")
+                convert_to_json(str(self.input_base_dir), name)
+            data_file = json_path
+
         transform(
             inputs=[data_file],
             input_format="obojson",

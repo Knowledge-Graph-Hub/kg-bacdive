@@ -43,6 +43,13 @@
   url: http://purl.obolibrary.org/obo/ncbitaxon.json
   local_name: ncbitaxon.json
 
+#
+# ChEBI
+#
+-
+  url: http://purl.obolibrary.org/obo/chebi.owl.gz
+  local_name: chebi.owl.gz
+
 # **** Data sources ****
 # ATC
 # The Anatomical Therapeutic Chemical Classification for drugs

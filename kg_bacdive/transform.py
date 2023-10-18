@@ -4,15 +4,11 @@ from pathlib import Path
 from typing import List, Optional
 
 from kg_bacdive.transform_utils.bacdive import BacDiveTransform
+from kg_bacdive.transform_utils.mediadive.mediadive import MediaDiveDiveTransform
 from kg_bacdive.transform_utils.ontology.ontology_transform import ONTOLOGIES, OntologyTransform
 
 DATA_SOURCES = {
-    # "MondoTransform": OntologyTransform,
-    # "ChebiTransform": OntologyTransform,
-    "NCBITaxonTransform": OntologyTransform,
-    # "ENVOTransform": OntologyTransform,
-    # "GOTransform": OntologyTransform,
-    # "OGMSTransform": OntologyTransform,
+    "OntologyTransform": OntologyTransform,
     # "DrugCentralTransform": DrugCentralTransform,
     # "OrphanetTransform": OrphanetTransform,
     # "OMIMTransform": OMIMTransform,
@@ -22,6 +18,7 @@ DATA_SOURCES = {
     # "ProteinAtlasTransform": ProteinAtlasTransform,
     # "STRINGTransform": STRINGTransform,
     "BacDiveTransform": BacDiveTransform,
+    "MediaDiveDiveTransform": MediaDiveDiveTransform,
 }
 
 
