@@ -1,5 +1,5 @@
 """
-Template design.
+MediaDive KG.
 
 Example script to transform downloaded data into a graph format that KGX can ingest directly,
 in either TSV or JSON format:
@@ -8,7 +8,7 @@ https://github.com/NCATS-Tangerine/kgx/blob/master/data-preparation.md
 Input: any file in data/raw/ (that was downloaded by placing a URL in incoming.txt/yaml
 and running `run.py download`.
 
-Output: transformed data in data/raw/[source name]:
+Output: transformed data in data/raw/MediaDive:
 
 Output these two files:
 - nodes.tsv
