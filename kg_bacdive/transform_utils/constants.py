@@ -43,12 +43,13 @@ SAFETY_INFO = "Safety information"
 SEQUENCE_INFO = "Sequence information"
 
 DATA_KEY = "data"
-SOLUTIONS_KEY = "solutions"
+SOLUTION_KEY = "solutions"
 
 RECIPE_KEY = "recipe"
 COMPOUND_KEY = "compound"
 COMPOUND_ID_KEY = "compound_id"
 SOLUTION_KEY = "solution"
+SOLUTIONS_KEY = "solutions"
 SOLUTION_ID_KEY = "solution_id"
 INGREDIENT_KEY = "ingredient_key"
 INGREDIENT_ID_KEY = "ingredient_id_key"
@@ -95,6 +96,7 @@ MEDIUM_ID_COLUMN = "medium_id"
 MEDIUM_LABEL_COLUMN = "medium_label"
 MEDIUM_URL_COLUMN = "medium_url"
 MEDIADIVE_URL_COLUMN = "mediadive_medium_url"
+INGREDIENTS_COLUMN = "ingredents"
 
 
 MEDIADIVE_ID_COLUMN = "mediadive_id"

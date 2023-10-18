@@ -28,7 +28,6 @@ from oaklib import get_adapter
 from tqdm import tqdm
 
 from kg_bacdive.transform_utils.constants import (
-    BACDIVE_ID_COLUMN,
     CAS_RN_KEY,
     CAS_RN_PREFIX,
     CHEBI_KEY,
@@ -37,15 +36,13 @@ from kg_bacdive.transform_utils.constants import (
     COMPOUND_ID_KEY,
     COMPOUND_KEY,
     DATA_KEY,
-    DSM_NUMBER_COLUMN,
-    EXTERNAL_LINKS_CULTURE_NUMBER_COLUMN,
+    INGREDIENTS_COLUMN,
+    IS_INGREDIENT_EDGE,
     KEGG_KEY,
     KEGG_PREFIX,
-    KEYWORDS_COLUMN,
     MEDIADIVE_COMPLEX_MEDIUM_COLUMN,
     MEDIADIVE_COMPOUND_PREFIX,
     MEDIADIVE_DESC_COLUMN,
-    MEDIADIVE_DIR,
     MEDIADIVE_ID_COLUMN,
     MEDIADIVE_LINK_COLUMN,
     MEDIADIVE_MAX_PH_COLUMN,
@@ -56,20 +53,15 @@ from kg_bacdive.transform_utils.constants import (
     MEDIADIVE_SOLUTION_PREFIX,
     MEDIADIVE_SOURCE_COLUMN,
     MEDIADIVE_TMP_DIR,
-    MEDIADIVE_URL_COLUMN,
     MEDIADIVE_MEDIUM_YAML_DIR,
     MEDIUM,
-    MEDIUM_ID_COLUMN,
-    MEDIUM_LABEL_COLUMN,
-    MEDIUM_URL_COLUMN,
-    NCBITAXON_DESCRIPTION_COLUMN,
-    NCBITAXON_ID_COLUMN,
     PUBCHEM_KEY,
     PUBCHEM_PREFIX,
     RECIPE_KEY,
     SOLUTION,
     SOLUTION_ID_KEY,
     SOLUTION_KEY,
+    SOLUTIONS_KEY,
 )
 from kg_bacdive.transform_utils.transform import Transform
 
@@ -179,6 +171,7 @@ class MediaDiveDiveTransform(Transform):
             MEDIADIVE_MAX_PH_COLUMN,
             MEDIADIVE_REF_COLUMN,
             MEDIADIVE_DESC_COLUMN,
+            INGREDIENTS_COLUMN,
         ]
 
         # make directory in data/transformed
@@ -210,12 +203,22 @@ class MediaDiveDiveTransform(Transform):
                                 json_obj = yaml.safe_load(f)
                             except yaml.YAMLError as exc:
                                 print(exc)
-
-
-
-
+                    if SOLUTIONS_KEY not in json_obj:
+                        continue
+                    solution_id_list = [solution['id'] for solution in json_obj[SOLUTIONS_KEY]]
+                    ingredients_dict = {}
+                    medium_ingredient_edges = []
                     medium_id = MEDIADIVE_COMPOUND_PREFIX+str(id)  # SUBJECT
 
+                    for solution_id in solution_id_list:
+                        ingredients_dict.update(self.get_compounds_of_solution(str(solution_id)))
+                        medium_ingredient_edges.extend([
+                            [medium_id, IS_INGREDIENT_EDGE, v, MEDIADIVE_REST_API_BASE_URL+SOLUTION+str(solution_id)] for _,v in ingredients_dict.items()
+                        ])
+
+                    ingredient_nodes = [
+                        [v, k, None] for k, v in ingredients_dict.items()
+                    ]
 
                     data = [
                         medium_id,
@@ -227,29 +230,20 @@ class MediaDiveDiveTransform(Transform):
                         dictionary[MEDIADIVE_MAX_PH_COLUMN],
                         dictionary[MEDIADIVE_REF_COLUMN],
                         dictionary[MEDIADIVE_DESC_COLUMN],
+                        str(ingredients_dict)
                     ]
 
                     writer.writerow(data)  # writing the data
 
-                    # if mediadive_id and medium_id:
-                    #     # Combine list creation and extension
-                    #     nodes_data_to_write = [
-                    #         [mediadive_id, ncbi_label, None],
-                    #         [medium_id, medium_label, None]
-                    #         # *ingredient_nodes,
-                    #     ]
-                    #     node_writer.writerows(nodes_data_to_write)
+                    # Combine list creation and extension
+                    nodes_data_to_write = [
+                        [medium_id, dictionary[MEDIADIVE_NAME_COLUMN], None],
+                        *ingredient_nodes,
+                    ]
+                    node_writer.writerows(nodes_data_to_write)
 
-                    #     edges_data_to_write = [
-                    #         mediadive_id,
-                    #         NCBI_TO_MEDIUM_EDGE,
-                    #         medium_id,
-                    #         None,
-                    #         BACDIVE_PREFIX + key,
-                    #     ]
+                    edge_writer.writerows(medium_ingredient_edges)
 
-                    #     edge_writer.writerow(edges_data_to_write)
-
-                    progress.set_description(f"Processing file: {medium_id}.yaml")
+                    progress.set_description(f"Processing ingredient: {medium_id}")
                     # After each iteration, call the update method to advance the progress bar.
                     progress.update()
