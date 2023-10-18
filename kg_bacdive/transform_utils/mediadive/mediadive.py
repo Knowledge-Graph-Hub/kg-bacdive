@@ -18,8 +18,8 @@ import csv
 import json
 import os
 from pathlib import Path
-from urllib.parse import urlparse
 from typing import Dict, Optional, Union
+from urllib.parse import urlparse
 
 import requests
 import requests_cache
@@ -46,6 +46,7 @@ from kg_bacdive.transform_utils.constants import (
     MEDIADIVE_ID_COLUMN,
     MEDIADIVE_LINK_COLUMN,
     MEDIADIVE_MAX_PH_COLUMN,
+    MEDIADIVE_MEDIUM_YAML_DIR,
     MEDIADIVE_MIN_PH_COLUMN,
     MEDIADIVE_NAME_COLUMN,
     MEDIADIVE_REF_COLUMN,
@@ -53,7 +54,6 @@ from kg_bacdive.transform_utils.constants import (
     MEDIADIVE_SOLUTION_PREFIX,
     MEDIADIVE_SOURCE_COLUMN,
     MEDIADIVE_TMP_DIR,
-    MEDIADIVE_MEDIUM_YAML_DIR,
     MEDIUM,
     PUBCHEM_KEY,
     PUBCHEM_PREFIX,
@@ -74,7 +74,7 @@ class MediaDiveDiveTransform(Transform):
         """Instantiate part."""
         source_name = "MediaDive"
         super().__init__(source_name, input_dir, output_dir)
-        requests_cache.install_cache('mediadive_cache')
+        requests_cache.install_cache("mediadive_cache")
         self.chebi_impl = get_adapter("sqlite:obo:chebi")
 
     def _get_mediadive_json(self, url: str) -> Dict[str, str]:
@@ -137,7 +137,11 @@ class MediaDiveDiveTransform(Transform):
         else:
             return MEDIADIVE_COMPOUND_PREFIX + id
 
-    def download_yaml_and_get_json(self, url: str, target_dir: Path, ) -> Dict[str, str]:
+    def download_yaml_and_get_json(
+        self,
+        url: str,
+        target_dir: Path,
+    ) -> Dict[str, str]:
         """
         Download MetaDive data using a url.
 
@@ -145,7 +149,7 @@ class MediaDiveDiveTransform(Transform):
         """
         data_json = self._get_mediadive_json(url)
         parsed_url = urlparse(url)
-        fn = parsed_url.path.split('/')[-1]+".yaml"
+        fn = parsed_url.path.split("/")[-1] + ".yaml"
         if not (target_dir / fn).is_file():
             with open(str(target_dir / fn), "w") as f:
                 f.write(yaml.dump(data_json))
@@ -194,31 +198,37 @@ class MediaDiveDiveTransform(Transform):
                     id = str(dictionary["id"])
                     fn: Path = Path(str(MEDIADIVE_MEDIUM_YAML_DIR / id) + ".yaml")
                     if not fn.is_file():
-                        url = MEDIADIVE_REST_API_BASE_URL+MEDIUM+id
+                        url = MEDIADIVE_REST_API_BASE_URL + MEDIUM + id
                         json_obj = self.download_yaml_and_get_json(url, MEDIADIVE_MEDIUM_YAML_DIR)
                     else:
                         # Import YAML file fn as a dict
-                        with open(fn, 'r') as f:
+                        with open(fn, "r") as f:
                             try:
                                 json_obj = yaml.safe_load(f)
                             except yaml.YAMLError as exc:
                                 print(exc)
                     if SOLUTIONS_KEY not in json_obj:
                         continue
-                    solution_id_list = [solution['id'] for solution in json_obj[SOLUTIONS_KEY]]
+                    solution_id_list = [solution["id"] for solution in json_obj[SOLUTIONS_KEY]]
                     ingredients_dict = {}
                     medium_ingredient_edges = []
-                    medium_id = MEDIADIVE_COMPOUND_PREFIX+str(id)  # SUBJECT
+                    medium_id = MEDIADIVE_COMPOUND_PREFIX + str(id)  # SUBJECT
 
                     for solution_id in solution_id_list:
                         ingredients_dict.update(self.get_compounds_of_solution(str(solution_id)))
-                        medium_ingredient_edges.extend([
-                            [medium_id, IS_INGREDIENT_EDGE, v, MEDIADIVE_REST_API_BASE_URL+SOLUTION+str(solution_id)] for _,v in ingredients_dict.items()
-                        ])
+                        medium_ingredient_edges.extend(
+                            [
+                                [
+                                    medium_id,
+                                    IS_INGREDIENT_EDGE,
+                                    v,
+                                    MEDIADIVE_REST_API_BASE_URL + SOLUTION + str(solution_id),
+                                ]
+                                for _, v in ingredients_dict.items()
+                            ]
+                        )
 
-                    ingredient_nodes = [
-                        [v, k, None] for k, v in ingredients_dict.items()
-                    ]
+                    ingredient_nodes = [[v, k, None] for k, v in ingredients_dict.items()]
 
                     data = [
                         medium_id,
@@ -230,7 +240,7 @@ class MediaDiveDiveTransform(Transform):
                         dictionary[MEDIADIVE_MAX_PH_COLUMN],
                         dictionary[MEDIADIVE_REF_COLUMN],
                         dictionary[MEDIADIVE_DESC_COLUMN],
-                        str(ingredients_dict)
+                        str(ingredients_dict),
                     ]
 
                     writer.writerow(data)  # writing the data

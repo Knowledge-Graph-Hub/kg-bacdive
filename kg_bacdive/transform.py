@@ -8,12 +8,7 @@ from kg_bacdive.transform_utils.mediadive.mediadive import MediaDiveDiveTransfor
 from kg_bacdive.transform_utils.ontology.ontology_transform import ONTOLOGIES, OntologyTransform
 
 DATA_SOURCES = {
-    # "MondoTransform": OntologyTransform,
-    "ChebiTransform": OntologyTransform,
-    "NCBITaxonTransform": OntologyTransform,
-    # "ENVOTransform": OntologyTransform,
-    # "GOTransform": OntologyTransform,
-    # "OGMSTransform": OntologyTransform,
+    "OntologyTransform": OntologyTransform,
     # "DrugCentralTransform": DrugCentralTransform,
     # "OrphanetTransform": OrphanetTransform,
     # "OMIMTransform": OMIMTransform,
