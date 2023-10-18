@@ -133,3 +133,4 @@ data/raw/*
 # User added files
 kg_bacdive/transform_utils/*/tmp/*/*.yaml
 data/transformed/ontologies/*.tsv
+mediadive_cache.sqlite
