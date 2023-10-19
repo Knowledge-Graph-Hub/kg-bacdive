@@ -80,11 +80,15 @@ SOLUTION = "solution/"
 
 BACDIVE_MEDIUM_DICT = {"dsmz": BACDIVE_API_BASE_URL + MEDIUM}
 
-NCBI_TO_MEDIUM_EDGE = "biolink:growsIn-PLACEHOLDER"
-MEDIUM_TO_NCBI_EDGE = "biolink:supportsGrowth-PLACEHOLDER"
-NCBI_CATEGORY = "biolink:IndividualOrganism"
-MEDIUM_CATEGORY = "biolink:Medium-PLACEHOLDER"
-IS_INGREDIENT_EDGE = "biolink:has_part"
+NCBI_TO_MEDIUM_EDGE = "biolink:occurs_in"
+MEDIUM_TO_NCBI_EDGE = "biolink:contains_process"
+MEDIUM_TO_INGREDIENT_EDGE = "biolink:has_part"  # Could also be has_constituent/has_participant
+NCBI_CATEGORY = "biolink:OrganismTaxon"
+MEDIUM_CATEGORY = "biolink:ChemicalEntity"
+INGREDIENT_CATEGORY = "biolink:ChemicalEntity"
+
+HAS_PART = "BFO:0000051"
+IS_GROWN_IN = "BAO:0002924"
 
 BACDIVE_ID_COLUMN = "bacdive_id"
 DSM_NUMBER_COLUMN = "dsm_number"

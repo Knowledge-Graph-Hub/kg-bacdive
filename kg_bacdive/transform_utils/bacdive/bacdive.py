@@ -39,14 +39,17 @@ from kg_bacdive.transform_utils.constants import (
     EXTERNAL_LINKS_CULTURE_NUMBER_COLUMN,
     GENERAL,
     GENERAL_DESCRIPTION,
+    IS_GROWN_IN,
     KEYWORDS,
     KEYWORDS_COLUMN,
     MATCHING_LEVEL,
     MEDIADIVE_REST_API_BASE_URL,
     MEDIADIVE_URL_COLUMN,
+    MEDIUM_CATEGORY,
     MEDIUM_ID_COLUMN,
     MEDIUM_LABEL_COLUMN,
     MEDIUM_URL_COLUMN,
+    NCBI_CATEGORY,
     NCBI_TO_MEDIUM_EDGE,
     NCBITAXON_DESCRIPTION_COLUMN,
     NCBITAXON_ID,
@@ -242,9 +245,8 @@ class BacDiveTransform(Transform):
                     if ncbitaxon_id and medium_id:
                         # Combine list creation and extension
                         nodes_data_to_write = [
-                            [ncbitaxon_id, ncbi_label, None],
-                            [medium_id, medium_label, None]
-                            # *ingredient_nodes,
+                            [ncbitaxon_id, ncbi_label, NCBI_CATEGORY],
+                            [medium_id, medium_label, MEDIUM_CATEGORY],
                         ]
                         node_writer.writerows(nodes_data_to_write)
 
@@ -252,7 +254,7 @@ class BacDiveTransform(Transform):
                             ncbitaxon_id,
                             NCBI_TO_MEDIUM_EDGE,
                             medium_id,
-                            None,
+                            IS_GROWN_IN,
                             BACDIVE_PREFIX + key,
                         ]
 

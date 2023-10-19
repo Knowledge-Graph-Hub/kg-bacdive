@@ -36,8 +36,9 @@ from kg_bacdive.transform_utils.constants import (
     COMPOUND_ID_KEY,
     COMPOUND_KEY,
     DATA_KEY,
+    HAS_PART,
+    INGREDIENT_CATEGORY,
     INGREDIENTS_COLUMN,
-    IS_INGREDIENT_EDGE,
     KEGG_KEY,
     KEGG_PREFIX,
     MEDIADIVE_COMPLEX_MEDIUM_COLUMN,
@@ -55,6 +56,8 @@ from kg_bacdive.transform_utils.constants import (
     MEDIADIVE_SOURCE_COLUMN,
     MEDIADIVE_TMP_DIR,
     MEDIUM,
+    MEDIUM_CATEGORY,
+    MEDIUM_TO_INGREDIENT_EDGE,
     PUBCHEM_KEY,
     PUBCHEM_PREFIX,
     RECIPE_KEY,
@@ -220,15 +223,18 @@ class MediaDiveDiveTransform(Transform):
                             [
                                 [
                                     medium_id,
-                                    IS_INGREDIENT_EDGE,
+                                    MEDIUM_TO_INGREDIENT_EDGE,
                                     v,
+                                    HAS_PART,
                                     MEDIADIVE_REST_API_BASE_URL + SOLUTION + str(solution_id),
                                 ]
                                 for _, v in ingredients_dict.items()
                             ]
                         )
 
-                    ingredient_nodes = [[v, k, None] for k, v in ingredients_dict.items()]
+                    ingredient_nodes = [
+                        [v, k, INGREDIENT_CATEGORY] for k, v in ingredients_dict.items()
+                    ]
 
                     data = [
                         medium_id,
@@ -247,7 +253,7 @@ class MediaDiveDiveTransform(Transform):
 
                     # Combine list creation and extension
                     nodes_data_to_write = [
-                        [medium_id, dictionary[MEDIADIVE_NAME_COLUMN], None],
+                        [medium_id, dictionary[MEDIADIVE_NAME_COLUMN], MEDIUM_CATEGORY],
                         *ingredient_nodes,
                     ]
                     node_writer.writerows(nodes_data_to_write)
