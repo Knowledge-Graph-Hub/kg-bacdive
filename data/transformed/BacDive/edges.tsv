@@ -1,4 +1,4 @@
-subject	edge_label	object	relation	provided_by
+subject	predicate	object	relation	provided_by
 NCBITaxon:1955243	biolink:occurs_in	dsmz:1669	BAO:0002924	bacdive:158156
 NCBITaxon:1873457	biolink:occurs_in	dsmz:92	BAO:0002924	bacdive:139807
 NCBITaxon:1848903	biolink:occurs_in	dsmz:1609	BAO:0002924	bacdive:132461
