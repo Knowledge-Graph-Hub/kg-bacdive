@@ -134,4 +134,5 @@ data/raw/*
 kg_bacdive/transform_utils/*/tmp/*/*.yaml
 data/transformed/ontologies/*.tsv
 mediadive_cache.sqlite
-data/merged/merged-kg.tar.gz
+data/merged/*
+
