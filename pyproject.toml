@@ -16,6 +16,7 @@ koza = "*"
 biolink-model = "*"
 oaklib = "^0.5.20"
 requests-cache = "^1.1.0"
+llm = "^0.11"
 
 [tool.poetry.group.dev.dependencies]
 pytest = {version = ">=7.1.2"}

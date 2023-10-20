@@ -68,6 +68,7 @@ CAS_RN_PREFIX = "CAS-RN:"
 PUBCHEM_PREFIX = "PubChem:"
 MEDIADIVE_COMPOUND_PREFIX = "mediadive.ingredient:"
 MEDIADIVE_SOLUTION_PREFIX = "mediadive.solution:"
+GO_PREFIX = "GO:"
 
 KEGG_PREFIX = "KEGG:"
 

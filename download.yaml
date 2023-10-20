@@ -33,10 +33,10 @@
 #
 # ENVO
 #
-# -
-#   url: http://purl.obolibrary.org/obo/envo.json
-#   local_name: envo.json
-#
+-
+  url: http://purl.obolibrary.org/obo/envo.json
+  local_name: envo.json
+
 # NCBITaxon
 #
 -
@@ -50,6 +50,12 @@
   url: http://purl.obolibrary.org/obo/chebi.owl.gz
   local_name: chebi.owl.gz
 
+#
+# GO
+#
+-
+  url: http://purl.obolibrary.org/obo/go.json
+  local_name: go.json
 # **** Data sources ****
 # ATC
 # The Anatomical Therapeutic Chemical Classification for drugs
@@ -69,3 +75,23 @@
 -
   url: https://mediadive.dsmz.de/rest/media
   local_name: mediadive.json
+
+# Condensed-traits
+# - GTDB
+#   link: https://github.com/bacteria-archaea-traits/bacteria-archaea-traits/blob/master/output/condensed_traits_GTDB.csv
+#-
+#  url: https://github.com/bacteria-archaea-traits/bacteria-archaea-traits/blob/master/output/condensed_traits_GTDB.csv?raw=true
+#  local_name: condensed_traits_GTDB.csv
+# - NCBI
+#   link: https://github.com/bacteria-archaea-traits/bacteria-archaea-traits/tree/master/output
+-
+  url: https://github.com/bacteria-archaea-traits/bacteria-archaea-traits/blob/master/output/condensed_traits_NCBI.csv?raw=true
+  local_name: traits.csv
+
+# # ****Conversion Tables****
+#
+# Environment
+#
+-
+  url: https://raw.githubusercontent.com/bacteria-archaea-traits/bacteria-archaea-traits/master/data/conversion_tables/environments.csv
+  local_name: environments.csv
