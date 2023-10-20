@@ -37,6 +37,7 @@ from kg_bacdive.transform_utils.constants import (
     COMPOUND_KEY,
     DATA_KEY,
     HAS_PART,
+    ID_COLUMN,
     INGREDIENT_CATEGORY,
     INGREDIENTS_COLUMN,
     KEGG_KEY,
@@ -200,7 +201,7 @@ class MediaDiveDiveTransform(Transform):
 
             with tqdm(total=len(input_json[DATA_KEY]) + 1, desc="Processing files") as progress:
                 for dictionary in input_json[DATA_KEY]:
-                    id = str(dictionary["id"])
+                    id = str(dictionary[ID_COLUMN])
                     fn: Path = Path(str(MEDIADIVE_MEDIUM_YAML_DIR / id) + ".yaml")
                     if not fn.is_file():
                         url = MEDIADIVE_REST_API_BASE_URL + MEDIUM + id

@@ -5,6 +5,17 @@ from typing import Optional, Union
 
 import yaml
 
+from kg_bacdive.transform_utils.constants import (
+    CATEGORY_COLUMN,
+    ID_COLUMN,
+    NAME_COLUMN,
+    OBJECT_COLUMN,
+    PREDICATE_COLUMN,
+    PROVIDED_BY_COLUMN,
+    RELATION_COLUMN,
+    SUBJECT_COLUMN,
+)
+
 
 class Transform:
 
@@ -37,13 +48,13 @@ class Transform:
         """
         # default columns, can be appended to or overwritten as necessary
         self.source_name = source_name
-        self.node_header = ["id", "name", "category"]
+        self.node_header = [ID_COLUMN, NAME_COLUMN, CATEGORY_COLUMN]
         self.edge_header = [
-            "subject",
-            "predicate",  # was "edge_label",
-            "object",
-            "relation",
-            "provided_by",
+            SUBJECT_COLUMN,
+            PREDICATE_COLUMN,  # was "edge_label",
+            OBJECT_COLUMN,
+            RELATION_COLUMN,
+            PROVIDED_BY_COLUMN,
         ]
 
         # default dirs
