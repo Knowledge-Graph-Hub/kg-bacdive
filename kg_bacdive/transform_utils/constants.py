@@ -68,6 +68,7 @@ CAS_RN_PREFIX = "CAS-RN:"
 PUBCHEM_PREFIX = "PubChem:"
 MEDIADIVE_COMPOUND_PREFIX = "mediadive.ingredient:"
 MEDIADIVE_SOLUTION_PREFIX = "mediadive.solution:"
+MEDIADIVE_MEDIUM_PREFIX = "mediadive.medium:"
 GO_PREFIX = "GO:"
 
 KEGG_PREFIX = "KEGG:"
@@ -79,13 +80,15 @@ MEDIUM = "medium/"
 COMPOUND = "ingredient/"
 SOLUTION = "solution/"
 
-BACDIVE_MEDIUM_DICT = {"dsmz": BACDIVE_API_BASE_URL + MEDIUM}
+BACDIVE_MEDIUM_DICT = {MEDIADIVE_MEDIUM_PREFIX: BACDIVE_API_BASE_URL + MEDIUM}
 
 NCBI_TO_MEDIUM_EDGE = "biolink:occurs_in"
 MEDIUM_TO_NCBI_EDGE = "biolink:contains_process"
 MEDIUM_TO_INGREDIENT_EDGE = "biolink:has_part"  # Could also be has_constituent/has_participant
+MEDIUM_TO_SOLUTION_EDGE = "biolink:has_part"
 NCBI_CATEGORY = "biolink:OrganismTaxon"
 MEDIUM_CATEGORY = "biolink:ChemicalEntity"
+SOLUTION_CATEGORY = "biolink:ChemicalEntity"
 INGREDIENT_CATEGORY = "biolink:ChemicalEntity"
 
 HAS_PART = "BFO:0000051"
@@ -111,11 +114,11 @@ MEDIUM_ID_COLUMN = "medium_id"
 MEDIUM_LABEL_COLUMN = "medium_label"
 MEDIUM_URL_COLUMN = "medium_url"
 MEDIADIVE_URL_COLUMN = "mediadive_medium_url"
+SOLUTIONS_COLUMN = "solutions"
 INGREDIENTS_COLUMN = "ingredents"
 
 
 MEDIADIVE_ID_COLUMN = "mediadive_id"
-MEDIADIVE_NAME_COLUMN = "name"
 MEDIADIVE_COMPLEX_MEDIUM_COLUMN = "complex_medium"
 MEDIADIVE_SOURCE_COLUMN = "source"
 MEDIADIVE_LINK_COLUMN = "link"
@@ -123,3 +126,15 @@ MEDIADIVE_MIN_PH_COLUMN = "min_pH"
 MEDIADIVE_MAX_PH_COLUMN = "max_pH"
 MEDIADIVE_REF_COLUMN = "reference"
 MEDIADIVE_DESC_COLUMN = "description"
+
+# Traits
+TAX_ID_COLUMN = "tax_id"
+CARBON_SUBSTRATES_COLUMN = "carbon_substrates"
+PATHWAYS_COLUMN = "pathways"
+OBJECT_ID_COLUMN = "object_id"
+OBJECT_LABEL_COLUMN = "object_label"
+OBJECT_CATEGORIES_COLUMN = "object_categories"
+OBJECT_ALIASES_COLUMN = "object_aliases"
+SUBJECT_LABEL_COLUMN = "subject_label"
+START_COLUMN = "start"
+END_COLUMN = "end"
