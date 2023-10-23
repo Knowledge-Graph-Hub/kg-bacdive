@@ -217,7 +217,7 @@ class BacDiveTransform(Transform):
                                 )
                                 medium_id = next(
                                     (
-                                        medium_url.replace(val, key + ":")
+                                        medium_url.replace(val, key)
                                         for key, val in BACDIVE_MEDIUM_DICT.items()
                                         if medium_url.startswith(val)
                                     ),

@@ -48,9 +48,9 @@ from kg_bacdive.transform_utils.constants import (
     MEDIADIVE_ID_COLUMN,
     MEDIADIVE_LINK_COLUMN,
     MEDIADIVE_MAX_PH_COLUMN,
+    MEDIADIVE_MEDIUM_PREFIX,
     MEDIADIVE_MEDIUM_YAML_DIR,
     MEDIADIVE_MIN_PH_COLUMN,
-    MEDIADIVE_NAME_COLUMN,
     MEDIADIVE_REF_COLUMN,
     MEDIADIVE_REST_API_BASE_URL,
     MEDIADIVE_SOLUTION_PREFIX,
@@ -59,12 +59,16 @@ from kg_bacdive.transform_utils.constants import (
     MEDIUM,
     MEDIUM_CATEGORY,
     MEDIUM_TO_INGREDIENT_EDGE,
+    MEDIUM_TO_SOLUTION_EDGE,
+    NAME_COLUMN,
     PUBCHEM_KEY,
     PUBCHEM_PREFIX,
     RECIPE_KEY,
     SOLUTION,
+    SOLUTION_CATEGORY,
     SOLUTION_ID_KEY,
     SOLUTION_KEY,
+    SOLUTIONS_COLUMN,
     SOLUTIONS_KEY,
 )
 from kg_bacdive.transform_utils.transform import Transform
@@ -171,7 +175,7 @@ class MediaDiveDiveTransform(Transform):
 
         COLUMN_NAMES = [
             MEDIADIVE_ID_COLUMN,
-            MEDIADIVE_NAME_COLUMN,
+            NAME_COLUMN,
             MEDIADIVE_COMPLEX_MEDIUM_COLUMN,
             MEDIADIVE_SOURCE_COLUMN,
             MEDIADIVE_LINK_COLUMN,
@@ -179,6 +183,7 @@ class MediaDiveDiveTransform(Transform):
             MEDIADIVE_MAX_PH_COLUMN,
             MEDIADIVE_REF_COLUMN,
             MEDIADIVE_DESC_COLUMN,
+            SOLUTIONS_COLUMN,
             INGREDIENTS_COLUMN,
         ]
 
@@ -215,17 +220,19 @@ class MediaDiveDiveTransform(Transform):
                                 print(exc)
                     if SOLUTIONS_KEY not in json_obj:
                         continue
-                    solution_id_list = [solution["id"] for solution in json_obj[SOLUTIONS_KEY]]
+                    # solution_id_list = [solution[ID_COLUMN] for solution in json_obj[SOLUTIONS_KEY]]
+                    solutions_dict = {solution[ID_COLUMN]: solution[NAME_COLUMN] for solution in json_obj[SOLUTIONS_KEY]}
                     ingredients_dict = {}
-                    medium_ingredient_edges = []
-                    medium_id = MEDIADIVE_COMPOUND_PREFIX + str(id)  # SUBJECT
+                    solution_ingredient_edges = []
+                    medium_id = MEDIADIVE_MEDIUM_PREFIX + str(id)  # SUBJECT
 
-                    for solution_id in solution_id_list:
+                    for solution_id in solutions_dict.keys():
+                        solution_curie = MEDIADIVE_SOLUTION_PREFIX+str(solution_id)
                         ingredients_dict.update(self.get_compounds_of_solution(str(solution_id)))
-                        medium_ingredient_edges.extend(
+                        solution_ingredient_edges.extend(
                             [
                                 [
-                                    medium_id,
+                                    solution_curie,
                                     MEDIUM_TO_INGREDIENT_EDGE,
                                     v,
                                     HAS_PART,
@@ -234,14 +241,27 @@ class MediaDiveDiveTransform(Transform):
                                 for _, v in ingredients_dict.items()
                             ]
                         )
+                        solution_ingredient_edges.append(
+                            # Add medium_solution_edge here too
+                            [
+                                medium_id,
+                                MEDIUM_TO_SOLUTION_EDGE,
+                                solution_curie,
+                                HAS_PART,
+                                MEDIADIVE_REST_API_BASE_URL + SOLUTION + str(solution_id),
+                            ]
+                        )
 
                     ingredient_nodes = [
                         [v, k, INGREDIENT_CATEGORY] for k, v in ingredients_dict.items()
                     ]
+                    solution_nodes = [
+                        [MEDIADIVE_SOLUTION_PREFIX+str(k), v, SOLUTION_CATEGORY] for k, v in solutions_dict.items()
+                    ]
 
                     data = [
                         medium_id,
-                        dictionary[MEDIADIVE_NAME_COLUMN],
+                        dictionary[NAME_COLUMN],
                         dictionary[MEDIADIVE_COMPLEX_MEDIUM_COLUMN],
                         dictionary[MEDIADIVE_SOURCE_COLUMN],
                         dictionary[MEDIADIVE_LINK_COLUMN],
@@ -249,6 +269,7 @@ class MediaDiveDiveTransform(Transform):
                         dictionary[MEDIADIVE_MAX_PH_COLUMN],
                         dictionary[MEDIADIVE_REF_COLUMN],
                         dictionary[MEDIADIVE_DESC_COLUMN],
+                        str(solutions_dict),
                         str(ingredients_dict),
                     ]
 
@@ -256,12 +277,18 @@ class MediaDiveDiveTransform(Transform):
 
                     # Combine list creation and extension
                     nodes_data_to_write = [
-                        [medium_id, dictionary[MEDIADIVE_NAME_COLUMN], MEDIUM_CATEGORY],
+                        [medium_id, dictionary[NAME_COLUMN], MEDIUM_CATEGORY],
+                        *solution_nodes,
                         *ingredient_nodes,
                     ]
                     node_writer.writerows(nodes_data_to_write)
 
-                    edge_writer.writerows(medium_ingredient_edges)
+                    # medium_solution_ingredient_edges = [
+                    #     medium_solution_edges,
+                    #     *solution_ingredient_edges
+                    # ]
+
+                    edge_writer.writerows(solution_ingredient_edges)
 
                     progress.set_description(f"Processing ingredient: {medium_id}")
                     # After each iteration, call the update method to advance the progress bar.
