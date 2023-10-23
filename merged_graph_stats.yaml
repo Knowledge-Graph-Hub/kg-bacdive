@@ -1,13 +1,13 @@
 edge_stats:
   count_by_predicates:
     biolink:has_part:
-      count: 60144
+      count: 84816
       provided_by:
         MediaDive:
-          count: 60144
+          count: 84816
       source:
         unknown:
-          count: 60144
+          count: 84816
     biolink:inverseOf:
       count: 1
       provided_by:
@@ -62,29 +62,21 @@ edge_stats:
         unknown:
           count: 240712
     biolink:NamedThing-biolink:has_part-biolink:ChemicalSubstance:
-      count: 48527
+      count: 50254
       provided_by:
         MediaDive:
-          count: 48527
+          count: 50254
       source:
         unknown:
-          count: 48527
+          count: 50254
     biolink:NamedThing-biolink:has_part-biolink:NamedThing:
-      count: 11615
+      count: 34562
       provided_by:
         MediaDive:
-          count: 11615
+          count: 34562
       source:
         unknown:
-          count: 11615
-    biolink:NamedThing-biolink:has_part-unknown:
-      count: 2
-      provided_by:
-        MediaDive:
-          count: 2
-      source:
-        unknown:
-          count: 2
+          count: 34562
     biolink:NamedThing-biolink:occurs_in-biolink:NamedThing:
       count: 16
       provided_by:
@@ -146,7 +138,7 @@ edge_stats:
   - ncbitaxon.json
   source:
   - unknown
-  total_edges: 2923488
+  total_edges: 2948160
 graph_name: kg-bacdive graph
 node_stats:
   count_by_category:
@@ -158,12 +150,12 @@ node_stats:
         chebi.json:
           count: 185295
     biolink:NamedThing:
-      count: 14844
+      count: 17183
       provided_by:
         BacDive:
           count: 8801
         MediaDive:
-          count: 6043
+          count: 9615
         chebi.json:
           count: 460
         ncbitaxon.json:
@@ -183,7 +175,7 @@ node_stats:
         ncbitaxon.json:
           count: 2523756
     unknown:
-      count: 2
+      count: 0
   node_categories:
   - biolink:ChemicalSubstance
   - biolink:NamedThing
@@ -194,4 +186,4 @@ node_stats:
   - MediaDive
   - chebi.json
   - ncbitaxon.json
-  total_nodes: 2715930
+  total_nodes: 2718267
