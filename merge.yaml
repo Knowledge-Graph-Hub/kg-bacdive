@@ -2,31 +2,46 @@
 configuration:
   output_directory: data/merged
   checkpoint: false
+  curie_map:
+    # define non-canonical CURIE to IRI mappings (for RDF)
+  node_properties:
+    # define predicates that are to be treated as direct node properties (for RDF)
+  predicate_mappings:
+    # map non-canonical predicates to a property name (for RDF)
+  property_types:
+    # define the type for non-canonical properties for RDF export
 
 merged_graph:
   name: kg-bacdive graph
   source:
-    hp:
-      name: "HP"
+    ncbitaxon:
+      name: "NCBITaxon"
       input:
         format: tsv
         filename:
-          - data/transformed/ontologies/HPTransform_nodes.tsv
-          - data/transformed/ontologies/HPTransform_edges.tsv
-    envo:
-      name: "ENVO"
+          - data/transformed/ontologies/ncbitaxon_nodes.tsv
+          - data/transformed/ontologies/ncbitaxon_edges.tsv
+    chebi:
+      name: "CHEBI"
       input:
         format: tsv
         filename:
-          - data/transformed/ontologies/EnvoTransform_nodes.tsv
-          - data/transformed/ontologies/EnvoTransform_edges.tsv
-    # chebi_to_reactome:
-    #   name: "CHEBI to Reactome Pathways"
-    #   input:
-    #     format: tsv
-    #     filename:
-    #       - data/transformed/reactome/chebi2reactome_nodes.tsv
-    #       - data/transformed/reactome/chebi2reactome_edges.tsv
+          - data/transformed/ontologies/chebi_nodes.tsv
+          - data/transformed/ontologies/chebi_edges.tsv
+    bacdive:
+      name: "BacDive"
+      input:
+        format: tsv
+        filename:
+          - data/transformed/BacDive/nodes.tsv
+          - data/transformed/BacDive/edges.tsv
+    mediadive:
+      name: "MediaDive"
+      input:
+        format: tsv
+        filename:
+          - data/transformed/MediaDive/nodes.tsv
+          - data/transformed/MediaDive/edges.tsv
   operations:
     - name: kgx.graph_operations.summarize_graph.generate_graph_stats
       args:
@@ -42,7 +57,7 @@ merged_graph:
       format: tsv
       compression: tar.gz
       filename: merged-kg
-    merged-kg-nt:
-      format: nt
-      compression: gz
-      filename: kg_bacdive.nt.gz
+    # merged-kg-nt:
+    #   format: nt
+    #   compression: gz
+    #   filename: kg_bacdive.nt.gz

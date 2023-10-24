@@ -132,5 +132,8 @@ data/raw/*
 !data/raw/exclusion_branches.tsv
 
 # User added files
-kg_bacdive/transform_utils/bacdive/tmp/yaml/*.yaml
+kg_bacdive/transform_utils/*/tmp/*/*.yaml
 data/transformed/ontologies/*.tsv
+mediadive_cache.sqlite
+data/merged/*
+
