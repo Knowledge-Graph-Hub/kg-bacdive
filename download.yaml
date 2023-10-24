@@ -40,8 +40,8 @@
 # NCBITaxon
 #
 -
-  url: http://purl.obolibrary.org/obo/ncbitaxon.json
-  local_name: ncbitaxon.json
+  url: http://purl.obolibrary.org/obo/ncbitaxon.owl.gz
+  local_name: ncbitaxon.owl.gz
 
 #
 # ChEBI
