@@ -138,3 +138,8 @@ OBJECT_ALIASES_COLUMN = "object_aliases"
 SUBJECT_LABEL_COLUMN = "subject_label"
 START_COLUMN = "start"
 END_COLUMN = "end"
+
+# ROBOT
+ROBOT_REMOVED_SUFFIX = "_removed_subset"
+ROBOT_EXTRACT_SUFFIX = "_extract_subset"
+EXCLUSION_TERMS_FILE = "exclusion_branches.tsv"

@@ -1,6 +1,12 @@
 """Utility to implement ROBOT over ontology files."""
 import os
-import subprocess  # noqa Source: https://docs.python.org/2/library/subprocess.html#popen-constructor
+import subprocess
+from pathlib import Path
+from typing import List, Union
+
+from kg_bacdive.transform_utils.constants import (
+    ROBOT_REMOVED_SUFFIX,
+)
 
 
 def initialize_robot(path: str) -> list:
@@ -122,6 +128,59 @@ def extract_convert_to_json(path: str, ont_name: str, terms: str, mode: str):
             output_json,
             "-f",
             "json",
+        ]
+
+    subprocess.call(call, env=env)  # noqa
+
+    return None
+
+
+def remove_convert_to_json(path: str, ont_name: str, terms: Union[List, Path]):
+    """
+    Remove all children of provided CURIE(s).
+
+    :param path: path of file to be converted
+    :param ont_name: Name of the ontology
+    :param terms: Either CURIE or a file of CURIEs list.
+    :return: None
+    """
+    robot_file, env = initialize_robot(path)
+    input_owl = os.path.join(path, ont_name.lower() + ".owl")
+    output_json = os.path.join(path, ont_name.lower() + ROBOT_REMOVED_SUFFIX + ".json")
+
+    input_file = input_owl
+
+    if isinstance(terms, List):
+        terms_param = [
+            item for sublist in zip(["--term"] * len(terms), terms, strict=True) for item in sublist
+        ]
+        call = [
+            "bash",
+            robot_file,
+            "remove",
+            "--input",
+            input_file,
+            *terms_param,
+            "--select",
+            "'self descendants'",
+            "convert",
+            "--output",
+            output_json,
+        ]
+    else:
+        call = [
+            "bash",
+            robot_file,
+            "remove",
+            "--input",
+            input_file,
+            "--term-file",
+            terms,
+            "--select",
+            "'self descendants'",
+            "convert",
+            "--output",
+            output_json,
         ]
 
     subprocess.call(call, env=env)  # noqa
