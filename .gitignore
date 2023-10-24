@@ -129,6 +129,7 @@ dmypy.json
 .pyre/
 data/raw/*
 !data/raw/.keep
+!data/raw/exclusion_branches.tsv
 
 # User added files
 kg_bacdive/transform_utils/*/tmp/*/*.yaml
