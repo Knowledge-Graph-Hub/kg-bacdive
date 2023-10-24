@@ -221,13 +221,16 @@ class MediaDiveDiveTransform(Transform):
                     if SOLUTIONS_KEY not in json_obj:
                         continue
                     # solution_id_list = [solution[ID_COLUMN] for solution in json_obj[SOLUTIONS_KEY]]
-                    solutions_dict = {solution[ID_COLUMN]: solution[NAME_COLUMN] for solution in json_obj[SOLUTIONS_KEY]}
+                    solutions_dict = {
+                        solution[ID_COLUMN]: solution[NAME_COLUMN]
+                        for solution in json_obj[SOLUTIONS_KEY]
+                    }
                     ingredients_dict = {}
                     solution_ingredient_edges = []
                     medium_id = MEDIADIVE_MEDIUM_PREFIX + str(id)  # SUBJECT
 
                     for solution_id in solutions_dict.keys():
-                        solution_curie = MEDIADIVE_SOLUTION_PREFIX+str(solution_id)
+                        solution_curie = MEDIADIVE_SOLUTION_PREFIX + str(solution_id)
                         ingredients_dict.update(self.get_compounds_of_solution(str(solution_id)))
                         solution_ingredient_edges.extend(
                             [
@@ -256,7 +259,8 @@ class MediaDiveDiveTransform(Transform):
                         [v, k, INGREDIENT_CATEGORY] for k, v in ingredients_dict.items()
                     ]
                     solution_nodes = [
-                        [MEDIADIVE_SOLUTION_PREFIX+str(k), v, SOLUTION_CATEGORY] for k, v in solutions_dict.items()
+                        [MEDIADIVE_SOLUTION_PREFIX + str(k), v, SOLUTION_CATEGORY]
+                        for k, v in solutions_dict.items()
                     ]
 
                     data = [

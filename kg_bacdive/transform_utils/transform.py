@@ -5,7 +5,16 @@ from typing import Optional, Union
 
 import yaml
 
-from kg_bacdive.transform_utils.constants import CATEGORY_COLUMN, ID_COLUMN, NAME_COLUMN, OBJECT_COLUMN, PREDICATE_COLUMN, PROVIDED_BY_COLUMN, RELATION_COLUMN, SUBJECT_COLUMN
+from kg_bacdive.transform_utils.constants import (
+    CATEGORY_COLUMN,
+    ID_COLUMN,
+    NAME_COLUMN,
+    OBJECT_COLUMN,
+    PREDICATE_COLUMN,
+    PROVIDED_BY_COLUMN,
+    RELATION_COLUMN,
+    SUBJECT_COLUMN,
+)
 
 
 class Transform:
