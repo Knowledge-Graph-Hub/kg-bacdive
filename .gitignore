@@ -127,13 +127,16 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-data/raw/*
-!data/raw/.keep
-!data/raw/exclusion_branches.tsv
+
 
 # User added files
+data/raw/*.*
+data/raw/robot
+!data/raw/.keep
+!data/raw/exclusion_branches.tsv
+!data/raw/nlp/*
 kg_bacdive/transform_utils/*/tmp/*/*.yaml
 data/transformed/ontologies/*.tsv
 *.sqlite
 data/merged/*
-
+**/.DS_Store
