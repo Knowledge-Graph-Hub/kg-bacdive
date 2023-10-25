@@ -256,10 +256,10 @@ class MediaDiveDiveTransform(Transform):
                         )
 
                     ingredient_nodes = [
-                        [v, k, INGREDIENT_CATEGORY] for k, v in ingredients_dict.items()
+                        [v, INGREDIENT_CATEGORY, k] for k, v in ingredients_dict.items()
                     ]
                     solution_nodes = [
-                        [MEDIADIVE_SOLUTION_PREFIX + str(k), v, SOLUTION_CATEGORY]
+                        [MEDIADIVE_SOLUTION_PREFIX + str(k), SOLUTION_CATEGORY, v]
                         for k, v in solutions_dict.items()
                     ]
 
@@ -281,16 +281,12 @@ class MediaDiveDiveTransform(Transform):
 
                     # Combine list creation and extension
                     nodes_data_to_write = [
-                        [medium_id, dictionary[NAME_COLUMN], MEDIUM_CATEGORY],
+                        [medium_id, MEDIUM_CATEGORY, dictionary[NAME_COLUMN]],
                         *solution_nodes,
                         *ingredient_nodes,
                     ]
+                    nodes_data_to_write = [sublist + [None]*11 for sublist in nodes_data_to_write]
                     node_writer.writerows(nodes_data_to_write)
-
-                    # medium_solution_ingredient_edges = [
-                    #     medium_solution_edges,
-                    #     *solution_ingredient_edges
-                    # ]
 
                     edge_writer.writerows(solution_ingredient_edges)
 

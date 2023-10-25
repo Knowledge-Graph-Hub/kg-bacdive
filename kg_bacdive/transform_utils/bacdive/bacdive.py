@@ -83,13 +83,6 @@ class BacDiveTransform(Transform):
         """Run the transformation."""
         # replace with downloaded data filename for this source
         input_file = os.path.join(self.input_base_dir, "bacdive_strains.json")  # must exist already
-        # mediadive_file = os.path.join(self.input_base_dir, "mediadive.json")
-
-        # # Read MediaDive JSON
-        # with open(mediadive_file, "r") as f:
-        #     mediadive = json.load(f)
-
-        # mediadive_data:List = mediadive["data"]
         # Read the JSON file into the variable input_json
         with open(input_file, "r") as f:
             input_json = json.load(f)
@@ -132,7 +125,6 @@ class BacDiveTransform(Transform):
                         with open(str(fn), "w") as outfile:
                             yaml.dump(value, outfile)
 
-                    # self._extract_values(value, template)
                     # Get "General" information
                     general_info = value.get(GENERAL, {})
                     # bacdive_id = general_info.get(BACDIVE_ID) # This is the same as `key`
@@ -249,9 +241,10 @@ class BacDiveTransform(Transform):
                     if ncbitaxon_id and medium_id:
                         # Combine list creation and extension
                         nodes_data_to_write = [
-                            [ncbitaxon_id, ncbi_label, NCBI_CATEGORY],
-                            [medium_id, medium_label, MEDIUM_CATEGORY],
+                            [ncbitaxon_id, NCBI_CATEGORY, ncbi_label],
+                            [medium_id, MEDIUM_CATEGORY, medium_label],
                         ]
+                        nodes_data_to_write = [sublist + [None]*11 for sublist in nodes_data_to_write]
                         node_writer.writerows(nodes_data_to_write)
 
                         edges_data_to_write = [

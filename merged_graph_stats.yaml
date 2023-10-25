@@ -3,23 +3,15 @@ edge_stats:
     biolink:has_part:
       count: 84816
       provided_by:
-        MediaDive:
+        unknown:
           count: 84816
       source:
         unknown:
           count: 84816
-    biolink:inverseOf:
-      count: 1
-      provided_by:
-        chebi.json:
-          count: 1
-      source:
-        unknown:
-          count: 1
     biolink:occurs_in:
       count: 8597
       provided_by:
-        BacDive:
+        unknown:
           count: 8597
       source:
         unknown:
@@ -33,18 +25,74 @@ edge_stats:
         unknown:
           count: 90277
     biolink:subclass_of:
-      count: 2764469
+      count: 1056056
       provided_by:
         chebi.json:
           count: 240712
-        ncbitaxon.json:
-          count: 2523757
+        ncbitaxon_removed_subset.json:
+          count: 815344
       source:
         unknown:
-          count: 2764469
+          count: 1056056
     unknown:
       count: 0
   count_by_spo:
+    biolink:ChemicalEntity-biolink:has_part-biolink:ChemicalEntity:
+      count: 84816
+      provided_by:
+        unknown:
+          count: 84816
+      source:
+        unknown:
+          count: 84816
+    biolink:ChemicalEntity-biolink:has_part-biolink:ChemicalSubstance:
+      count: 50254
+      provided_by:
+        unknown:
+          count: 50254
+      source:
+        unknown:
+          count: 50254
+    biolink:ChemicalEntity-biolink:related_to-biolink:ChemicalEntity:
+      count: 85
+      provided_by:
+        chebi.json:
+          count: 85
+      source:
+        unknown:
+          count: 85
+    biolink:ChemicalEntity-biolink:related_to-biolink:ChemicalSubstance:
+      count: 1376
+      provided_by:
+        chebi.json:
+          count: 1376
+      source:
+        unknown:
+          count: 1376
+    biolink:ChemicalEntity-biolink:subclass_of-biolink:ChemicalEntity:
+      count: 39
+      provided_by:
+        chebi.json:
+          count: 39
+      source:
+        unknown:
+          count: 39
+    biolink:ChemicalEntity-biolink:subclass_of-biolink:ChemicalSubstance:
+      count: 832
+      provided_by:
+        chebi.json:
+          count: 832
+      source:
+        unknown:
+          count: 832
+    biolink:ChemicalSubstance-biolink:related_to-biolink:ChemicalEntity:
+      count: 3763
+      provided_by:
+        chebi.json:
+          count: 3763
+      source:
+        unknown:
+          count: 3763
     biolink:ChemicalSubstance-biolink:related_to-biolink:ChemicalSubstance:
       count: 90277
       provided_by:
@@ -53,6 +101,14 @@ edge_stats:
       source:
         unknown:
           count: 90277
+    biolink:ChemicalSubstance-biolink:subclass_of-biolink:ChemicalEntity:
+      count: 436
+      provided_by:
+        chebi.json:
+          count: 436
+      source:
+        unknown:
+          count: 436
     biolink:ChemicalSubstance-biolink:subclass_of-biolink:ChemicalSubstance:
       count: 240712
       provided_by:
@@ -61,31 +117,7 @@ edge_stats:
       source:
         unknown:
           count: 240712
-    biolink:NamedThing-biolink:has_part-biolink:ChemicalSubstance:
-      count: 50254
-      provided_by:
-        MediaDive:
-          count: 50254
-      source:
-        unknown:
-          count: 50254
-    biolink:NamedThing-biolink:has_part-biolink:NamedThing:
-      count: 34562
-      provided_by:
-        MediaDive:
-          count: 34562
-      source:
-        unknown:
-          count: 34562
-    biolink:NamedThing-biolink:occurs_in-biolink:NamedThing:
-      count: 16
-      provided_by:
-        BacDive:
-          count: 16
-      source:
-        unknown:
-          count: 16
-    biolink:OntologyClass-biolink:inverseOf-biolink:OntologyClass:
+    biolink:OntologyClass-None-biolink:OntologyClass:
       count: 1
       provided_by:
         chebi.json:
@@ -96,15 +128,39 @@ edge_stats:
     biolink:OntologyClass-biolink:subclass_of-biolink:OntologyClass:
       count: 2
       provided_by:
-        ncbitaxon.json:
+        ncbitaxon_removed_subset.json:
           count: 2
       source:
         unknown:
           count: 2
-    biolink:OrganismalEntity-biolink:occurs_in-biolink:NamedThing:
+    biolink:OrganismTaxon-biolink:occurs_in-biolink:ChemicalEntity:
+      count: 8597
+      provided_by:
+        unknown:
+          count: 8597
+      source:
+        unknown:
+          count: 8597
+    biolink:OrganismTaxon-biolink:subclass_of-biolink:OrganismTaxon:
+      count: 250
+      provided_by:
+        ncbitaxon_removed_subset.json:
+          count: 250
+      source:
+        unknown:
+          count: 250
+    biolink:OrganismTaxon-biolink:subclass_of-biolink:OrganismalEntity:
+      count: 7553
+      provided_by:
+        ncbitaxon_removed_subset.json:
+          count: 7553
+      source:
+        unknown:
+          count: 7553
+    biolink:OrganismalEntity-biolink:occurs_in-biolink:ChemicalEntity:
       count: 8581
       provided_by:
-        BacDive:
+        unknown:
           count: 8581
       source:
         unknown:
@@ -112,78 +168,159 @@ edge_stats:
     biolink:OrganismalEntity-biolink:subclass_of-biolink:OntologyClass:
       count: 31
       provided_by:
-        ncbitaxon.json:
+        ncbitaxon_removed_subset.json:
           count: 31
       source:
         unknown:
           count: 31
-    biolink:OrganismalEntity-biolink:subclass_of-biolink:OrganismalEntity:
-      count: 2523724
+    biolink:OrganismalEntity-biolink:subclass_of-biolink:OrganismTaxon:
+      count: 18519
       provided_by:
-        ncbitaxon.json:
-          count: 2523724
+        ncbitaxon_removed_subset.json:
+          count: 18519
       source:
         unknown:
-          count: 2523724
+          count: 18519
+    biolink:OrganismalEntity-biolink:subclass_of-biolink:OrganismalEntity:
+      count: 815311
+      provided_by:
+        ncbitaxon_removed_subset.json:
+          count: 815311
+      source:
+        unknown:
+          count: 815311
   predicates:
   - biolink:has_part
-  - biolink:inverseOf
   - biolink:occurs_in
   - biolink:related_to
   - biolink:subclass_of
   provided_by:
-  - BacDive
-  - MediaDive
   - chebi.json
-  - ncbitaxon.json
+  - ncbitaxon_removed_subset.json
+  - unknown
   source:
   - unknown
-  total_edges: 2948160
+  total_edges: 1239747
 graph_name: kg-bacdive graph
 node_stats:
   count_by_category:
+    biolink:ChemicalEntity:
+      count: 9617
+      provided_by:
+        chebi.json:
+          count: 460
+        nodes.tsv:
+          count: 9617
     biolink:ChemicalSubstance:
       count: 185295
       provided_by:
-        MediaDive:
-          count: 460
         chebi.json:
           count: 185295
-    biolink:NamedThing:
-      count: 17183
-      provided_by:
-        BacDive:
-          count: 8801
-        MediaDive:
-          count: 9615
-        chebi.json:
+        nodes.tsv:
           count: 460
-        ncbitaxon.json:
-          count: 7553
     biolink:OntologyClass:
       count: 46
       provided_by:
         chebi.json:
           count: 25
-        ncbitaxon.json:
+        ncbitaxon_removed_subset.json:
           count: 30
-    biolink:OrganismalEntity:
-      count: 2523756
+    biolink:OrganismTaxon:
+      count: 7566
       provided_by:
-        BacDive:
+        ncbitaxon_removed_subset.json:
           count: 7553
-        ncbitaxon.json:
-          count: 2523756
+        nodes.tsv:
+          count: 7566
+    biolink:OrganismalEntity:
+      count: 815343
+      provided_by:
+        ncbitaxon_removed_subset.json:
+          count: 815343
+        nodes.tsv:
+          count: 7553
     unknown:
       count: 0
+  count_by_id_prefixes:
+    BFO: 1
+    CAS-RN: 190
+    CHEBI: 185770
+    IAO: 1
+    KEGG: 1
+    NCBITaxon: 822909
+    OBO: 30
+    OIO: 13
+    PubChem: 20
+    RO: 1
+    mediadive.ingredient: 258
+    mediadive.medium: 3292
+    mediadive.solution: 5381
+  count_by_id_prefixes_by_category:
+    biolink:ChemicalEntity:
+      CAS-RN: 190
+      CHEBI: 475
+      KEGG: 1
+      PubChem: 20
+      mediadive.ingredient: 258
+      mediadive.medium: 3292
+      mediadive.solution: 5381
+    biolink:ChemicalSubstance:
+      CHEBI: 185295
+    biolink:OntologyClass:
+      BFO: 1
+      IAO: 1
+      OBO: 30
+      OIO: 13
+      RO: 1
+    biolink:OrganismTaxon:
+      NCBITaxon: 7566
+    biolink:OrganismalEntity:
+      NCBITaxon: 815343
+    unknown: {}
   node_categories:
+  - biolink:ChemicalEntity
   - biolink:ChemicalSubstance
-  - biolink:NamedThing
   - biolink:OntologyClass
+  - biolink:OrganismTaxon
   - biolink:OrganismalEntity
+  node_id_prefixes:
+  - BFO
+  - CAS-RN
+  - CHEBI
+  - IAO
+  - KEGG
+  - NCBITaxon
+  - OBO
+  - OIO
+  - PubChem
+  - RO
+  - mediadive.ingredient
+  - mediadive.medium
+  - mediadive.solution
+  node_id_prefixes_by_category:
+    biolink:ChemicalEntity:
+    - CHEBI
+    - mediadive.medium
+    - mediadive.solution
+    - CAS-RN
+    - mediadive.ingredient
+    - PubChem
+    - KEGG
+    biolink:ChemicalSubstance:
+    - CHEBI
+    biolink:OntologyClass:
+    - IAO
+    - OBO
+    - OIO
+    - BFO
+    - RO
+    biolink:OrganismTaxon:
+    - NCBITaxon
+    biolink:OrganismalEntity:
+    - NCBITaxon
+    unknown: []
   provided_by:
-  - BacDive
-  - MediaDive
   - chebi.json
-  - ncbitaxon.json
-  total_nodes: 2718267
+  - ncbitaxon_removed_subset.json
+  - nodes.tsv
+  total_nodes: 1009854
