@@ -70,8 +70,9 @@ MEDIADIVE_COMPOUND_PREFIX = "mediadive.ingredient:"
 MEDIADIVE_SOLUTION_PREFIX = "mediadive.solution:"
 MEDIADIVE_MEDIUM_PREFIX = "mediadive.medium:"
 GO_PREFIX = "GO:"
-
 KEGG_PREFIX = "KEGG:"
+SHAPE_PREFIX = "microtraits.cell_shape_enum:"
+PATWAY_PREFIX = "microtraits.pathways:"
 
 MEDIADIVE_REST_API_BASE_URL = "https://mediadive.dsmz.de/rest/"
 BACDIVE_API_BASE_URL = "https://bacmedia.dsmz.de/"
@@ -86,13 +87,28 @@ NCBI_TO_MEDIUM_EDGE = "biolink:occurs_in"
 MEDIUM_TO_NCBI_EDGE = "biolink:contains_process"
 MEDIUM_TO_INGREDIENT_EDGE = "biolink:has_part"  # Could also be has_constituent/has_participant
 MEDIUM_TO_SOLUTION_EDGE = "biolink:has_part"
+NCBI_TO_SHAPE_EDGE = "biolink:has_phenotype"  # [org_name -> cell_shape, metabolism]
+NCBI_TO_CHEM_EDGE = "biolink:interacts_with"
+NCBI_TO_SOURCE_EDGE = "biolink:location_of"  # [org -> isolation_source]
+NCBI_TO_METABOLISM_EDGE = "biolink:capable_of"  # [org -> metabolism]
+NCBI_TO_PATHWAY_EDGE = "biolink:capable_of"  # # [org -> pathway]
+
 NCBI_CATEGORY = "biolink:OrganismTaxon"
 MEDIUM_CATEGORY = "biolink:ChemicalEntity"
 SOLUTION_CATEGORY = "biolink:ChemicalEntity"
 INGREDIENT_CATEGORY = "biolink:ChemicalEntity"
+SHAPE_CATEGORY = "biolink:AbstractEntity"
+METABOLISM_CATEGORY = "biolink:ActivityAndBehavior"
+PATHWAY_CATEGORY = "biolink:BiologicalProcess"
 
 HAS_PART = "BFO:0000051"
 IS_GROWN_IN = "BAO:0002924"
+HAS_PHENOTYPE = "RO:0002200"  # [org_name -> has phenotype -> cell_shape, metabolism]
+TROPHICALLY_INTERACTS_WITH = (
+    "RO:0002438"  # [org_name -> 'trophically interacts with' -> carbon_substrate]
+)
+LOCATION_OF = "RO:0001015"  # [org -> location_of -> source]
+BIOLOGICAL_PROCESS = "RO:0002215"  # [org -> biological_process -> metabolism]
 
 ID_COLUMN = "id"
 NAME_COLUMN = "name"
@@ -141,9 +157,20 @@ OBJECT_ID_COLUMN = "object_id"
 OBJECT_LABEL_COLUMN = "object_label"
 OBJECT_CATEGORIES_COLUMN = "object_categories"
 OBJECT_ALIASES_COLUMN = "object_aliases"
+MATCHES_WHOLE_TEXT_COLUMN = "matches_whole_text"
 SUBJECT_LABEL_COLUMN = "subject_label"
-START_COLUMN = "start"
-END_COLUMN = "end"
+START_COLUMN = "subject_start"
+END_COLUMN = "subject_end"
+TRAITS_DATASET_LABEL_COLUMN = "traits_dataset_term"
+ORG_NAME_COLUMN = "org_name"
+METABOLISM_COLUMN = "metabolism"
+PATHWAYS_COLUMN = "pathways"
+SHAPE_COLUMN = "shape"
+CELL_SHAPE_COLUMN = "cell_shape"
+ISOLATION_SOURCE_COLUMN = "isolation_source"
+TYPE_COLUMN = "Type"
+ENVO_TERMS_COLUMN = "ENVO_terms"
+ENVO_ID_COLUMN = "ENVO_ids"
 
 # ROBOT
 ROBOT_REMOVED_SUFFIX = "_removed_subset"
