@@ -244,7 +244,9 @@ class BacDiveTransform(Transform):
                             [ncbitaxon_id, NCBI_CATEGORY, ncbi_label],
                             [medium_id, MEDIUM_CATEGORY, medium_label],
                         ]
-                        nodes_data_to_write = [sublist + [None]*11 for sublist in nodes_data_to_write]
+                        nodes_data_to_write = [
+                            sublist + [None] * 11 for sublist in nodes_data_to_write
+                        ]
                         node_writer.writerows(nodes_data_to_write)
 
                         edges_data_to_write = [
