@@ -1,6 +1,6 @@
 # Knowledge Graphs for Microbial data
 
-This repository is derived from [kg-covid-19](https://github.com/Knowledge-Graph-Hub/kg-covid-19).
+The source for the framework of this repository is from [kg-cookiecutter](https://github.com/Knowledge-Graph-Hub/kg-cookiecutter).
 
 ## Knowledge Graph Hub concept
 Please see [here](https://github.com/Knowledge-Graph-Hub/kg-covid-19/wiki#knowledge-graph-hub-concept)
