@@ -10,7 +10,6 @@ from oaklib.datamodels.text_annotator import TextAnnotationConfiguration
 from kg_bacdive.transform_utils.constants import (
     END_COLUMN,
     MATCHES_WHOLE_TEXT_COLUMN,
-    NCBITAXON_PREFIX,
     OBJECT_ALIASES_COLUMN,
     OBJECT_CATEGORIES_COLUMN,
     OBJECT_ID_COLUMN,
@@ -90,7 +89,7 @@ def annotate(df: pd.DataFrame, prefix: str, exclusion_list: List, outfile: Path,
                 if responses:
                     for response in responses:
                         response_dict = response.__dict__
-                        response_dict[TAX_ID_COLUMN] = NCBITAXON_PREFIX+str(row[1].iloc[0])
+                        response_dict[TAX_ID_COLUMN] = row[1].iloc[0]
                         response_dict[TRAITS_DATASET_LABEL_COLUMN] = term
 
                         # Ensure the order of columns matches the header
