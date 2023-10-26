@@ -42,6 +42,13 @@ merged_graph:
         filename:
           - data/transformed/MediaDive/nodes.tsv
           - data/transformed/MediaDive/edges.tsv
+    traits:
+      input:
+        name: "traits"
+        format: tsv
+        filename:
+          - data/transformed/traits/nodes.tsv
+          - data/transformed/traits/edges.tsv
   operations:
     - name: kgx.graph_operations.summarize_graph.generate_graph_stats
       args:

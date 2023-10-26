@@ -42,6 +42,7 @@ from kg_bacdive.transform_utils.constants import (
     IS_GROWN_IN,
     KEYWORDS,
     KEYWORDS_COLUMN,
+    KNOWLEDGE_SOURCE_COLUMN,
     MATCHING_LEVEL,
     MEDIADIVE_REST_API_BASE_URL,
     MEDIADIVE_URL_COLUMN,
@@ -55,10 +56,12 @@ from kg_bacdive.transform_utils.constants import (
     NCBITAXON_ID,
     NCBITAXON_ID_COLUMN,
     NCBITAXON_PREFIX,
+    PROVIDED_BY_COLUMN,
     SPECIES,
     STRAIN,
 )
 from kg_bacdive.transform_utils.transform import Transform
+from kg_bacdive.utils.pandas_utils import drop_duplicates
 
 
 class BacDiveTransform(Transform):
@@ -81,13 +84,6 @@ class BacDiveTransform(Transform):
         """Run the transformation."""
         # replace with downloaded data filename for this source
         input_file = os.path.join(self.input_base_dir, "bacdive_strains.json")  # must exist already
-        # mediadive_file = os.path.join(self.input_base_dir, "mediadive.json")
-
-        # # Read MediaDive JSON
-        # with open(mediadive_file, "r") as f:
-        #     mediadive = json.load(f)
-
-        # mediadive_data:List = mediadive["data"]
         # Read the JSON file into the variable input_json
         with open(input_file, "r") as f:
             input_json = json.load(f)
@@ -118,8 +114,8 @@ class BacDiveTransform(Transform):
             node_writer = csv.writer(node, delimiter="\t")
             node_writer.writerow(self.node_header)
             edge_writer = csv.writer(edge, delimiter="\t")
-            index = self.edge_header.index("provided_by")
-            self.edge_header[index] = "knowledge_source"
+            index = self.edge_header.index(PROVIDED_BY_COLUMN)
+            self.edge_header[index] = KNOWLEDGE_SOURCE_COLUMN
             edge_writer.writerow(self.edge_header)
 
             with tqdm(total=len(input_json.items()) + 1, desc="Processing files") as progress:
@@ -130,7 +126,6 @@ class BacDiveTransform(Transform):
                         with open(str(fn), "w") as outfile:
                             yaml.dump(value, outfile)
 
-                    # self._extract_values(value, template)
                     # Get "General" information
                     general_info = value.get(GENERAL, {})
                     # bacdive_id = general_info.get(BACDIVE_ID) # This is the same as `key`
@@ -215,7 +210,7 @@ class BacDiveTransform(Transform):
                                 )
                                 medium_id = next(
                                     (
-                                        medium_url.replace(val, key + ":")
+                                        medium_url.replace(val, key)
                                         for key, val in BACDIVE_MEDIUM_DICT.items()
                                         if medium_url.startswith(val)
                                     ),
@@ -247,8 +242,11 @@ class BacDiveTransform(Transform):
                     if ncbitaxon_id and medium_id:
                         # Combine list creation and extension
                         nodes_data_to_write = [
-                            [ncbitaxon_id, ncbi_label, NCBI_CATEGORY],
-                            [medium_id, medium_label, MEDIUM_CATEGORY],
+                            [ncbitaxon_id, NCBI_CATEGORY, ncbi_label],
+                            [medium_id, MEDIUM_CATEGORY, medium_label],
+                        ]
+                        nodes_data_to_write = [
+                            sublist + [None] * 11 for sublist in nodes_data_to_write
                         ]
                         node_writer.writerows(nodes_data_to_write)
 
@@ -265,3 +263,6 @@ class BacDiveTransform(Transform):
                     progress.set_description(f"Processing file: {key}.yaml")
                     # After each iteration, call the update method to advance the progress bar.
                     progress.update()
+
+        drop_duplicates(self.output_node_file)
+        drop_duplicates(self.output_edge_file)

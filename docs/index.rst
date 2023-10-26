@@ -1,16 +1,22 @@
-.. kg-bacdive documentation master file, created by
-   sphinx-quickstart on Fri Aug 12 08:35:01 2022.
+.. KG-Microbe documentation master file, created by
+   sphinx-quickstart on Tue Jan  5 08:38:35 2021.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to kg-bacdive's documentation!
-=========================================================
+KG-Microbe documentation
+======================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Contents:
 
+   static/intro.md
+   
    modules
+
+   sources/index.md
+
+
 
 Indices and tables
 ==================
