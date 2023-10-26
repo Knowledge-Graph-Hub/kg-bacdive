@@ -19,7 +19,7 @@ edge_stats:
     biolink:related_to:
       count: 90277
       provided_by:
-        chebi.json:
+        unknown:
           count: 90277
       source:
         unknown:
@@ -27,10 +27,8 @@ edge_stats:
     biolink:subclass_of:
       count: 1056056
       provided_by:
-        chebi.json:
-          count: 240712
-        ncbitaxon_removed_subset.json:
-          count: 815344
+        unknown:
+          count: 1056056
       source:
         unknown:
           count: 1056056
@@ -56,7 +54,7 @@ edge_stats:
     biolink:ChemicalEntity-biolink:related_to-biolink:ChemicalEntity:
       count: 85
       provided_by:
-        chebi.json:
+        unknown:
           count: 85
       source:
         unknown:
@@ -64,7 +62,7 @@ edge_stats:
     biolink:ChemicalEntity-biolink:related_to-biolink:ChemicalSubstance:
       count: 1376
       provided_by:
-        chebi.json:
+        unknown:
           count: 1376
       source:
         unknown:
@@ -72,7 +70,7 @@ edge_stats:
     biolink:ChemicalEntity-biolink:subclass_of-biolink:ChemicalEntity:
       count: 39
       provided_by:
-        chebi.json:
+        unknown:
           count: 39
       source:
         unknown:
@@ -80,7 +78,7 @@ edge_stats:
     biolink:ChemicalEntity-biolink:subclass_of-biolink:ChemicalSubstance:
       count: 832
       provided_by:
-        chebi.json:
+        unknown:
           count: 832
       source:
         unknown:
@@ -88,7 +86,7 @@ edge_stats:
     biolink:ChemicalSubstance-biolink:related_to-biolink:ChemicalEntity:
       count: 3763
       provided_by:
-        chebi.json:
+        unknown:
           count: 3763
       source:
         unknown:
@@ -96,7 +94,7 @@ edge_stats:
     biolink:ChemicalSubstance-biolink:related_to-biolink:ChemicalSubstance:
       count: 90277
       provided_by:
-        chebi.json:
+        unknown:
           count: 90277
       source:
         unknown:
@@ -104,7 +102,7 @@ edge_stats:
     biolink:ChemicalSubstance-biolink:subclass_of-biolink:ChemicalEntity:
       count: 436
       provided_by:
-        chebi.json:
+        unknown:
           count: 436
       source:
         unknown:
@@ -112,7 +110,7 @@ edge_stats:
     biolink:ChemicalSubstance-biolink:subclass_of-biolink:ChemicalSubstance:
       count: 240712
       provided_by:
-        chebi.json:
+        unknown:
           count: 240712
       source:
         unknown:
@@ -120,7 +118,7 @@ edge_stats:
     biolink:OntologyClass-None-biolink:OntologyClass:
       count: 1
       provided_by:
-        chebi.json:
+        unknown:
           count: 1
       source:
         unknown:
@@ -128,7 +126,7 @@ edge_stats:
     biolink:OntologyClass-biolink:subclass_of-biolink:OntologyClass:
       count: 2
       provided_by:
-        ncbitaxon_removed_subset.json:
+        unknown:
           count: 2
       source:
         unknown:
@@ -144,7 +142,7 @@ edge_stats:
     biolink:OrganismTaxon-biolink:subclass_of-biolink:OrganismTaxon:
       count: 250
       provided_by:
-        ncbitaxon_removed_subset.json:
+        unknown:
           count: 250
       source:
         unknown:
@@ -152,7 +150,7 @@ edge_stats:
     biolink:OrganismTaxon-biolink:subclass_of-biolink:OrganismalEntity:
       count: 7553
       provided_by:
-        ncbitaxon_removed_subset.json:
+        unknown:
           count: 7553
       source:
         unknown:
@@ -168,7 +166,7 @@ edge_stats:
     biolink:OrganismalEntity-biolink:subclass_of-biolink:OntologyClass:
       count: 31
       provided_by:
-        ncbitaxon_removed_subset.json:
+        unknown:
           count: 31
       source:
         unknown:
@@ -176,7 +174,7 @@ edge_stats:
     biolink:OrganismalEntity-biolink:subclass_of-biolink:OrganismTaxon:
       count: 18519
       provided_by:
-        ncbitaxon_removed_subset.json:
+        unknown:
           count: 18519
       source:
         unknown:
@@ -184,7 +182,7 @@ edge_stats:
     biolink:OrganismalEntity-biolink:subclass_of-biolink:OrganismalEntity:
       count: 815311
       provided_by:
-        ncbitaxon_removed_subset.json:
+        unknown:
           count: 815311
       source:
         unknown:
@@ -195,8 +193,6 @@ edge_stats:
   - biolink:related_to
   - biolink:subclass_of
   provided_by:
-  - chebi.json
-  - ncbitaxon_removed_subset.json
   - unknown
   source:
   - unknown
