@@ -61,6 +61,7 @@ from kg_bacdive.transform_utils.constants import (
     STRAIN,
 )
 from kg_bacdive.transform_utils.transform import Transform
+from kg_bacdive.utils.pandas_utils import drop_duplicates
 
 
 class BacDiveTransform(Transform):
@@ -262,3 +263,6 @@ class BacDiveTransform(Transform):
                     progress.set_description(f"Processing file: {key}.yaml")
                     # After each iteration, call the update method to advance the progress bar.
                     progress.update()
+
+        drop_duplicates(self.output_node_file)
+        drop_duplicates(self.output_edge_file)

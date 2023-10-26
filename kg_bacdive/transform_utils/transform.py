@@ -7,13 +7,19 @@ import yaml
 
 from kg_bacdive.transform_utils.constants import (
     CATEGORY_COLUMN,
+    DESCRIPTION_COLUMN,
     ID_COLUMN,
+    IRI_COLUMN,
     NAME_COLUMN,
     OBJECT_COLUMN,
     PREDICATE_COLUMN,
     PROVIDED_BY_COLUMN,
     RELATION_COLUMN,
+    SAME_AS_COLUMN,
     SUBJECT_COLUMN,
+    SUBSETS_COLUMN,
+    SYNONYM_COLUMN,
+    XREF_COLUMN,
 )
 
 
@@ -42,7 +48,22 @@ class Transform:
         """
         # default columns, can be appended to or overwritten as necessary
         self.source_name = source_name
-        self.node_header = [ID_COLUMN, NAME_COLUMN, CATEGORY_COLUMN]
+        self.node_header = [
+            ID_COLUMN,
+            CATEGORY_COLUMN,
+            NAME_COLUMN,
+            DESCRIPTION_COLUMN,
+            XREF_COLUMN,
+            PROVIDED_BY_COLUMN,
+            SYNONYM_COLUMN,
+            IRI_COLUMN,
+            OBJECT_COLUMN,
+            PREDICATE_COLUMN,
+            RELATION_COLUMN,
+            SAME_AS_COLUMN,
+            SUBJECT_COLUMN,
+            SUBSETS_COLUMN,
+        ]
         self.edge_header = [
             SUBJECT_COLUMN,
             PREDICATE_COLUMN,  # was "edge_label",

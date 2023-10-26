@@ -72,6 +72,7 @@ from kg_bacdive.transform_utils.constants import (
     SOLUTIONS_KEY,
 )
 from kg_bacdive.transform_utils.transform import Transform
+from kg_bacdive.utils.pandas_utils import drop_duplicates
 
 
 class MediaDiveDiveTransform(Transform):
@@ -293,3 +294,6 @@ class MediaDiveDiveTransform(Transform):
                     progress.set_description(f"Processing ingredient: {medium_id}")
                     # After each iteration, call the update method to advance the progress bar.
                     progress.update()
+
+        drop_duplicates(self.output_node_file)
+        drop_duplicates(self.output_edge_file)
