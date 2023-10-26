@@ -13,10 +13,10 @@ Knowledge graph construction for BacDive data
  - `poetry run kg download` : This will download the resources needed for this project.
 
 ## Transform
- - `poetry run kg transform`: This transforms the resources into knowledge graphs.
+ - `poetry run kg transform`: This transforms the resources into knowledge graphs (KGs).
 
 ##  Merge
- - `poetry run kg merge`: This merges all tranformed nodes and edges above.
+ - `poetry run kg merge`: This merges all transformed graphs above.
 
 # Contributors
 Please remember to run `poetry run tox` before every commit to make sure the code you commit is error-free.
