@@ -25,7 +25,7 @@ from kg_bacdive.transform_utils.constants import (
 
 def annotate(df: pd.DataFrame, prefix: str, exclusion_list: List, outfile: Path, llm: bool = False):
     """
-    Anotate dataframe column text using oaklib + llm.
+    Annotate dataframe column text using oaklib + llm.
 
     :param df: Input DataFrame
     :param prefix: Ontology to be used.
