@@ -11,6 +11,7 @@ Subpackages
    kg_bacdive.transform_utils.example_transform
    kg_bacdive.transform_utils.mediadive
    kg_bacdive.transform_utils.ontology
+   kg_bacdive.transform_utils.traits
 
 Submodules
 ----------

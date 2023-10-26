@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>kg_bacdive package &mdash; kg-bacdive 0.0.0 documentation</title>
+  <title>kg_bacdive package &mdash; kg-microbe 0.0.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -32,7 +32,7 @@
           
           
           <a href="index.html" class="icon icon-home">
-            kg-bacdive
+            kg-microbe
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -44,6 +44,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="static/intro.html">Knowledge Graphs for Microbial data</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">kg_bacdive</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">kg_bacdive package</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
@@ -63,8 +64,11 @@
 <li class="toctree-l4"><a class="reference internal" href="#kg_bacdive.query.run_query"><code class="docutils literal notranslate"><span class="pre">run_query()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#kg-bacdive-run-module">kg_bacdive.run module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-kg_bacdive.transform">kg_bacdive.transform module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-kg_bacdive.run">kg_bacdive.run module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-kg_bacdive.transform">kg_bacdive.transform module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#kg_bacdive.transform.transform"><code class="docutils literal notranslate"><span class="pre">transform()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#module-kg_bacdive">Module contents</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#kg_bacdive.download"><code class="docutils literal notranslate"><span class="pre">download()</span></code></a></li>
 </ul>
@@ -81,7 +85,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">kg-bacdive</a>
+          <a href="index.html">kg-microbe</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -108,8 +112,16 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="kg_bacdive.merge_utils.html">kg_bacdive.merge_utils package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="kg_bacdive.merge_utils.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kg_bacdive.merge_utils.html#kg-bacdive-merge-utils-merge-kg-module">kg_bacdive.merge_utils.merge_kg module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kg_bacdive.merge_utils.html#module-contents">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kg_bacdive.merge_utils.html#module-kg_bacdive.merge_utils.merge_kg">kg_bacdive.merge_utils.merge_kg module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="kg_bacdive.merge_utils.html#kg_bacdive.merge_utils.merge_kg.load_and_merge"><code class="docutils literal notranslate"><span class="pre">load_and_merge()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="kg_bacdive.merge_utils.html#kg_bacdive.merge_utils.merge_kg.parse_load_config"><code class="docutils literal notranslate"><span class="pre">parse_load_config()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="kg_bacdive.merge_utils.html#module-kg_bacdive.merge_utils">Module contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="kg_bacdive.merge_utils.html#kg_bacdive.merge_utils.load_and_merge"><code class="docutils literal notranslate"><span class="pre">load_and_merge()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="kg_bacdive.merge_utils.html#kg_bacdive.merge_utils.parse_load_config"><code class="docutils literal notranslate"><span class="pre">parse_load_config()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="kg_bacdive.transform_utils.html">kg_bacdive.transform_utils package</a><ul>
@@ -134,8 +146,14 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="kg_bacdive.transform_utils.ontology.html">kg_bacdive.transform_utils.ontology package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="kg_bacdive.transform_utils.ontology.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="kg_bacdive.transform_utils.ontology.html#kg-bacdive-transform-utils-ontology-ontology-transform-module">kg_bacdive.transform_utils.ontology.ontology_transform module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="kg_bacdive.transform_utils.ontology.html#module-contents">Module contents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="kg_bacdive.transform_utils.ontology.html#module-kg_bacdive.transform_utils.ontology.ontology_transform">kg_bacdive.transform_utils.ontology.ontology_transform module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="kg_bacdive.transform_utils.ontology.html#module-kg_bacdive.transform_utils.ontology">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="kg_bacdive.transform_utils.traits.html">kg_bacdive.transform_utils.traits package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="kg_bacdive.transform_utils.traits.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="kg_bacdive.transform_utils.traits.html#module-kg_bacdive.transform_utils.traits.traits">kg_bacdive.transform_utils.traits.traits module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="kg_bacdive.transform_utils.traits.html#module-kg_bacdive.transform_utils.traits">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -146,11 +164,6 @@
 <li class="toctree-l3"><a class="reference internal" href="kg_bacdive.transform_utils.html#kg_bacdive.transform_utils.transform.Transform"><code class="docutils literal notranslate"><span class="pre">Transform</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="kg_bacdive.transform_utils.html#kg_bacdive.transform_utils.transform.Transform.DATA_DIR"><code class="docutils literal notranslate"><span class="pre">Transform.DATA_DIR</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="kg_bacdive.transform_utils.html#kg_bacdive.transform_utils.transform.Transform.DEFAULT_INPUT_DIR"><code class="docutils literal notranslate"><span class="pre">Transform.DEFAULT_INPUT_DIR</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="kg_bacdive.transform_utils.html#kg_bacdive.transform_utils.transform.Transform.DEFAULT_NLP_DIR"><code class="docutils literal notranslate"><span class="pre">Transform.DEFAULT_NLP_DIR</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="kg_bacdive.transform_utils.html#kg_bacdive.transform_utils.transform.Transform.DEFAULT_NLP_INPUT_DIR"><code class="docutils literal notranslate"><span class="pre">Transform.DEFAULT_NLP_INPUT_DIR</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="kg_bacdive.transform_utils.html#kg_bacdive.transform_utils.transform.Transform.DEFAULT_NLP_OUTPUT_DIR"><code class="docutils literal notranslate"><span class="pre">Transform.DEFAULT_NLP_OUTPUT_DIR</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="kg_bacdive.transform_utils.html#kg_bacdive.transform_utils.transform.Transform.DEFAULT_NLP_STOPWORDS_DIR"><code class="docutils literal notranslate"><span class="pre">Transform.DEFAULT_NLP_STOPWORDS_DIR</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="kg_bacdive.transform_utils.html#kg_bacdive.transform_utils.transform.Transform.DEFAULT_NLP_TERMS_DIR"><code class="docutils literal notranslate"><span class="pre">Transform.DEFAULT_NLP_TERMS_DIR</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="kg_bacdive.transform_utils.html#kg_bacdive.transform_utils.transform.Transform.DEFAULT_OUTPUT_DIR"><code class="docutils literal notranslate"><span class="pre">Transform.DEFAULT_OUTPUT_DIR</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="kg_bacdive.transform_utils.html#kg_bacdive.transform_utils.transform.Transform.pass_through"><code class="docutils literal notranslate"><span class="pre">Transform.pass_through()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="kg_bacdive.transform_utils.html#kg_bacdive.transform_utils.transform.Transform.run"><code class="docutils literal notranslate"><span class="pre">Transform.run()</span></code></a></li>
@@ -163,10 +176,19 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="kg_bacdive.utils.html">kg_bacdive.utils package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="kg_bacdive.utils.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kg_bacdive.utils.html#module-kg_bacdive.utils.ner_utils">kg_bacdive.utils.ner_utils module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="kg_bacdive.utils.html#kg_bacdive.utils.ner_utils.annotate"><code class="docutils literal notranslate"><span class="pre">annotate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="kg_bacdive.utils.html#module-kg_bacdive.utils.pandas_utils">kg_bacdive.utils.pandas_utils module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="kg_bacdive.utils.html#kg_bacdive.utils.pandas_utils.drop_duplicates"><code class="docutils literal notranslate"><span class="pre">drop_duplicates()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="kg_bacdive.utils.html#module-kg_bacdive.utils.robot_utils">kg_bacdive.utils.robot_utils module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="kg_bacdive.utils.html#kg_bacdive.utils.robot_utils.convert_to_json"><code class="docutils literal notranslate"><span class="pre">convert_to_json()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="kg_bacdive.utils.html#kg_bacdive.utils.robot_utils.extract_convert_to_json"><code class="docutils literal notranslate"><span class="pre">extract_convert_to_json()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="kg_bacdive.utils.html#kg_bacdive.utils.robot_utils.initialize_robot"><code class="docutils literal notranslate"><span class="pre">initialize_robot()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="kg_bacdive.utils.html#kg_bacdive.utils.robot_utils.remove_convert_to_json"><code class="docutils literal notranslate"><span class="pre">remove_convert_to_json()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="kg_bacdive.utils.html#module-kg_bacdive.utils">Module contents</a></li>
@@ -263,12 +285,35 @@ into data directory (default: data/).</p>
 </dd></dl>
 
 </section>
-<section id="kg-bacdive-run-module">
-<h2>kg_bacdive.run module<a class="headerlink" href="#kg-bacdive-run-module" title="Link to this heading"></a></h2>
+<section id="module-kg_bacdive.run">
+<span id="kg-bacdive-run-module"></span><h2>kg_bacdive.run module<a class="headerlink" href="#module-kg_bacdive.run" title="Link to this heading"></a></h2>
+<p>Drive KG download, transform, merge steps.</p>
 </section>
 <section id="module-kg_bacdive.transform">
 <span id="kg-bacdive-transform-module"></span><h2>kg_bacdive.transform module<a class="headerlink" href="#module-kg_bacdive.transform" title="Link to this heading"></a></h2>
-<p>Transform utility module.</p>
+<p>Transform module.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="kg_bacdive.transform.transform">
+<span class="sig-prename descclassname"><span class="pre">kg_bacdive.transform.</span></span><span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sources</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kg_bacdive.transform.transform" title="Link to this definition"></a></dt>
+<dd><p>Transform based on resource and class declared in DATA_SOURCES.</p>
+<p>Call scripts in kg_bacdive/transform/[source name]/ to
+transform each source into a graph format that
+KGX can ingest directly, in either TSV or JSON format:
+<a class="reference external" href="https://github.com/biolink/kgx/blob/master/data-preparation.md">https://github.com/biolink/kgx/blob/master/data-preparation.md</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_dir</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code>]) – A string pointing to the directory to import data from.</p></li>
+<li><p><strong>output_dir</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code>]) – A string pointing to the directory to output data to.</p></li>
+<li><p><strong>sources</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]]) – A list of sources to transform.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 <section id="module-kg_bacdive">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-kg_bacdive" title="Link to this heading"></a></h2>

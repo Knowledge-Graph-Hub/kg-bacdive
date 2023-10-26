@@ -1,0 +1,21 @@
+kg\_bacdive.transform\_utils.traits package
+===========================================
+
+Submodules
+----------
+
+kg\_bacdive.transform\_utils.traits.traits module
+-------------------------------------------------
+
+.. automodule:: kg_bacdive.transform_utils.traits.traits
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: kg_bacdive.transform_utils.traits
+   :members:
+   :undoc-members:
+   :show-inheritance:

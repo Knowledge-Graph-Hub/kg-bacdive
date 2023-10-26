@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>kg_bacdive.merge_utils package &mdash; kg-bacdive 0.0.0 documentation</title>
+  <title>kg_bacdive.merge_utils package &mdash; kg-microbe 0.0.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -32,7 +32,7 @@
           
           
           <a href="index.html" class="icon icon-home">
-            kg-bacdive
+            kg-microbe
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -44,6 +44,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="static/intro.html">Knowledge Graphs for Microbial data</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">kg_bacdive</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="kg_bacdive.html">kg_bacdive package</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="kg_bacdive.html#subpackages">Subpackages</a><ul class="current">
@@ -55,7 +56,7 @@
 <li class="toctree-l3"><a class="reference internal" href="kg_bacdive.html#submodules">Submodules</a></li>
 <li class="toctree-l3"><a class="reference internal" href="kg_bacdive.html#module-kg_bacdive.download">kg_bacdive.download module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="kg_bacdive.html#module-kg_bacdive.query">kg_bacdive.query module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="kg_bacdive.html#kg-bacdive-run-module">kg_bacdive.run module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="kg_bacdive.html#module-kg_bacdive.run">kg_bacdive.run module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="kg_bacdive.html#module-kg_bacdive.transform">kg_bacdive.transform module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="kg_bacdive.html#module-kg_bacdive">Module contents</a></li>
 </ul>
@@ -70,7 +71,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">kg-bacdive</a>
+          <a href="index.html">kg-microbe</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -95,11 +96,87 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
 </section>
-<section id="kg-bacdive-merge-utils-merge-kg-module">
-<h2>kg_bacdive.merge_utils.merge_kg module<a class="headerlink" href="#kg-bacdive-merge-utils-merge-kg-module" title="Link to this heading"></a></h2>
+<section id="module-kg_bacdive.merge_utils.merge_kg">
+<span id="kg-bacdive-merge-utils-merge-kg-module"></span><h2>kg_bacdive.merge_utils.merge_kg module<a class="headerlink" href="#module-kg_bacdive.merge_utils.merge_kg" title="Link to this heading"></a></h2>
+<p>Merging module.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="kg_bacdive.merge_utils.merge_kg.load_and_merge">
+<span class="sig-prename descclassname"><span class="pre">kg_bacdive.merge_utils.merge_kg.</span></span><span class="sig-name descname"><span class="pre">load_and_merge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">yaml_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kg_bacdive.merge_utils.merge_kg.load_and_merge" title="Link to this definition"></a></dt>
+<dd><p>Load and merge sources defined in the config YAML.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>yaml_file</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – A string pointing to a KGX compatible config YAML.</p></li>
+<li><p><strong>processes</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Number of processes to use.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiDiGraph</span></code></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>networkx.MultiDiGraph: The merged graph.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="kg_bacdive.merge_utils.merge_kg.parse_load_config">
+<span class="sig-prename descclassname"><span class="pre">kg_bacdive.merge_utils.merge_kg.</span></span><span class="sig-name descname"><span class="pre">parse_load_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">yaml_file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kg_bacdive.merge_utils.merge_kg.parse_load_config" title="Link to this definition"></a></dt>
+<dd><p>Parse load config YAML.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>yaml_file</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – A string pointing to a KGX compatible config YAML.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dict: The config as a dictionary.</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
-<section id="module-contents">
-<h2>Module contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<section id="module-kg_bacdive.merge_utils">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-kg_bacdive.merge_utils" title="Link to this heading"></a></h2>
+<p>Merge module.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="kg_bacdive.merge_utils.load_and_merge">
+<span class="sig-prename descclassname"><span class="pre">kg_bacdive.merge_utils.</span></span><span class="sig-name descname"><span class="pre">load_and_merge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">yaml_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kg_bacdive.merge_utils.load_and_merge" title="Link to this definition"></a></dt>
+<dd><p>Load and merge sources defined in the config YAML.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>yaml_file</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – A string pointing to a KGX compatible config YAML.</p></li>
+<li><p><strong>processes</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Number of processes to use.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiDiGraph</span></code></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>networkx.MultiDiGraph: The merged graph.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="kg_bacdive.merge_utils.parse_load_config">
+<span class="sig-prename descclassname"><span class="pre">kg_bacdive.merge_utils.</span></span><span class="sig-name descname"><span class="pre">parse_load_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">yaml_file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kg_bacdive.merge_utils.parse_load_config" title="Link to this definition"></a></dt>
+<dd><p>Parse load config YAML.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>yaml_file</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – A string pointing to a KGX compatible config YAML.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dict: The config as a dictionary.</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 </section>
 

@@ -4,6 +4,22 @@ kg\_bacdive.utils package
 Submodules
 ----------
 
+kg\_bacdive.utils.ner\_utils module
+-----------------------------------
+
+.. automodule:: kg_bacdive.utils.ner_utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+kg\_bacdive.utils.pandas\_utils module
+--------------------------------------
+
+.. automodule:: kg_bacdive.utils.pandas_utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 kg\_bacdive.utils.robot\_utils module
 -------------------------------------
 
