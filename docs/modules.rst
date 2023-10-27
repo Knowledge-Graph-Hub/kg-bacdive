@@ -4,7 +4,7 @@ kg-microbe
 .. toctree::
    :maxdepth: 4
 
-   kg_bacdive
+   kg_microbe
    query_utils
    run
    setup

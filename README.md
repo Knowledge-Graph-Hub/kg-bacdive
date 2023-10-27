@@ -1,4 +1,4 @@
-# kg-bacdive
+# kg-microbe
 
 Knowledge graph construction for BacDive data
 
@@ -6,8 +6,8 @@ Knowledge graph construction for BacDive data
  - Create a vrtual environment of your choice.
  - Install poetry using `pip install poetry`
  - `poetry install`
- - `git clone https://github.com/Knowledge-Graph-Hub/kg-bacdive.git`
- - `cd kg-bacdive`
+ - `git clone https://github.com/Knowledge-Graph-Hub/kg-microbe.git`
+ - `cd kg-microbe`
 
 ## Download resources needed
  - `poetry run kg download` : This will download the resources needed for this project.

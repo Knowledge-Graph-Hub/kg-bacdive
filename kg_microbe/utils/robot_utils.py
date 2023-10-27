@@ -4,7 +4,7 @@ import subprocess
 from pathlib import Path
 from typing import List, Union
 
-from kg_bacdive.transform_utils.constants import (
+from kg_microbe.transform_utils.constants import (
     ROBOT_REMOVED_SUFFIX,
 )
 

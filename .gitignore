@@ -135,7 +135,7 @@ data/raw/robot
 !data/raw/.keep
 !data/raw/exclusion_branches.tsv
 !data/raw/nlp/*
-kg_bacdive/transform_utils/*/tmp/*/*.yaml
+kg_microbe/transform_utils/*/tmp/*/*.yaml
 data/transformed/ontologies/*.tsv
 *.sqlite
 data/merged/*

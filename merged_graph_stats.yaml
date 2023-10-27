@@ -465,7 +465,7 @@ edge_stats:
   source:
   - unknown
   total_edges: 1341461
-graph_name: kg-bacdive graph
+graph_name: kg-microbe graph
 node_stats:
   count_by_category:
     biolink:AbstractEntity:

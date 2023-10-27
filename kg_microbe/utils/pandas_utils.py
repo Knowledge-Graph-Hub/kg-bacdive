@@ -3,7 +3,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from kg_bacdive.transform_utils.constants import OBJECT_COLUMN, PREDICATE_COLUMN, SUBJECT_COLUMN
+from kg_microbe.transform_utils.constants import OBJECT_COLUMN, PREDICATE_COLUMN, SUBJECT_COLUMN
 
 
 def drop_duplicates(file_path: Path):

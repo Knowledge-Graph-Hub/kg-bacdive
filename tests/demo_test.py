@@ -2,7 +2,7 @@
 
 import unittest
 
-from kg_bacdive import __version__
+from kg_microbe import __version__
 
 
 class TestVersion(unittest.TestCase):

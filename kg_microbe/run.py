@@ -3,11 +3,11 @@ import os
 
 import click
 
-from kg_bacdive import download as kg_download
-from kg_bacdive.merge_utils.merge_kg import load_and_merge
-from kg_bacdive.query import parse_query_yaml, result_dict_to_tsv, run_query
-from kg_bacdive.transform import DATA_SOURCES
-from kg_bacdive.transform import transform as kg_transform
+from kg_microbe import download as kg_download
+from kg_microbe.merge_utils.merge_kg import load_and_merge
+from kg_microbe.query import parse_query_yaml, result_dict_to_tsv, run_query
+from kg_microbe.transform import DATA_SOURCES
+from kg_microbe.transform import transform as kg_transform
 
 
 @click.group()

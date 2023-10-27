@@ -3,10 +3,10 @@ import logging
 from pathlib import Path
 from typing import List, Optional
 
-from kg_bacdive.transform_utils.bacdive.bacdive import BacDiveTransform
-from kg_bacdive.transform_utils.mediadive.mediadive import MediaDiveTransform
-from kg_bacdive.transform_utils.ontology.ontology_transform import ONTOLOGIES, OntologyTransform
-from kg_bacdive.transform_utils.traits.traits import TraitsTransform
+from kg_microbe.transform_utils.bacdive.bacdive import BacDiveTransform
+from kg_microbe.transform_utils.mediadive.mediadive import MediaDiveTransform
+from kg_microbe.transform_utils.ontology.ontology_transform import ONTOLOGIES, OntologyTransform
+from kg_microbe.transform_utils.traits.traits import TraitsTransform
 
 DATA_SOURCES = {
     "OntologyTransform": OntologyTransform,
@@ -30,7 +30,7 @@ def transform(
     """
     Transform based on resource and class declared in DATA_SOURCES.
 
-    Call scripts in kg_bacdive/transform/[source name]/ to
+    Call scripts in kg_microbe/transform/[source name]/ to
     transform each source into a graph format that
     KGX can ingest directly, in either TSV or JSON format:
     https://github.com/biolink/kgx/blob/master/data-preparation.md

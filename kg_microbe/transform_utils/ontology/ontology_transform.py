@@ -7,12 +7,12 @@ from typing import Optional, Union
 # from kgx.transformer import Transformer
 from kgx.cli.cli_utils import transform
 
-from kg_bacdive.transform_utils.constants import (
+from kg_microbe.transform_utils.constants import (
     EXCLUSION_TERMS_FILE,
     NCBITAXON_PREFIX,
     ROBOT_REMOVED_SUFFIX,
 )
-from kg_bacdive.utils.robot_utils import convert_to_json, remove_convert_to_json
+from kg_microbe.utils.robot_utils import convert_to_json, remove_convert_to_json
 
 from ..transform import Transform
 

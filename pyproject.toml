@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "kg-bacdive"
+name = "kg-microbe"
 version = "0.0.0"
-description = "kg-bacdive"
+description = "kg-microbe"
 authors = ["Harshad Hegde <hhegde@lbl.gov>"]
 license = "MIT"
 readme = "README.md"
@@ -44,7 +44,7 @@ docs = [
     ]
 
 [tool.poetry.scripts]
-kg = 'kg_bacdive.run:main'
+kg = 'kg_microbe.run:main'
 
 [tool.poetry-dynamic-versioning]
 enable = true
