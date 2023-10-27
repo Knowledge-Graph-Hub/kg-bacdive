@@ -1,4 +1,4 @@
 """BacDive transform."""
-from .mediadive import MediaDiveDiveTransform
+from .mediadive import MediaDiveTransform
 
-__all__ = ["MediaDiveDiveTransform"]
+__all__ = ["MediaDiveTransform"]

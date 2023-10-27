@@ -18,12 +18,13 @@ def drop_duplicates(file_path: Path):
     df.to_csv(file_path, sep="\t", index=False)
     return df
 
+
 def establish_transitive_relationship(
         file_path: Path,
-        subject_prefix:str,
+        subject_prefix: str,
         intermediate_prefix: str,
         predicate: str,
-        object_prefix:str
+        object_prefix: str
     ) -> pd.DataFrame:
     """Establish transitive relationship given the predicate is the same.
 
@@ -43,13 +44,20 @@ def establish_transitive_relationship(
     """
     df = drop_duplicates(file_path)
     df_relations = df.loc[df[PREDICATE_COLUMN] == predicate]
-    subject_condition = df[SUBJECT_COLUMN].str.startswith(subject_prefix)
-    intermediate_subject_condition = df[SUBJECT_COLUMN].str.startswith(intermediate_prefix)
-    object_condition = df[OBJECT_COLUMN].str.startswith(object_prefix)
-    intermediate_object_condition = df[OBJECT_COLUMN].str.startswith(intermediate_prefix)
+    subject_condition = df_relations[SUBJECT_COLUMN].str.startswith(subject_prefix)
+    intermediate_subject_condition = df_relations[SUBJECT_COLUMN].str.startswith(intermediate_prefix)
+    object_condition = df_relations[OBJECT_COLUMN].str.startswith(object_prefix)
+    intermediate_object_condition = df_relations[OBJECT_COLUMN].str.startswith(intermediate_prefix)
     subject_intermediate_df = df_relations[subject_condition & intermediate_object_condition]
     intermediate_object_df = df_relations[intermediate_subject_condition & object_condition]
 
-    for row in subject_intermediate_df.iterrows():
-        import pdb; pdb.set_trace()
+    list_of_dfs_to_append = []
 
+    for row in subject_intermediate_df.iterrows():
+        transitive_relations_df = intermediate_object_df.loc[intermediate_object_df[SUBJECT_COLUMN] == row[1].object]
+        transitive_relations_df.loc[transitive_relations_df[SUBJECT_COLUMN] == row[1].object, SUBJECT_COLUMN] = row[1].subject
+        list_of_dfs_to_append.append(transitive_relations_df)
+
+    df = pd.concat([df] + list_of_dfs_to_append)
+    df.to_csv(file_path, sep="\t", index=False)
+    return df

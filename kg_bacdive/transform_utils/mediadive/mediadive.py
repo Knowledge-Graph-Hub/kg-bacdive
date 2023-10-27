@@ -43,7 +43,7 @@ from kg_bacdive.transform_utils.constants import (
     KEGG_KEY,
     KEGG_PREFIX,
     MEDIADIVE_COMPLEX_MEDIUM_COLUMN,
-    MEDIADIVE_COMPOUND_PREFIX,
+    MEDIADIVE_INGREDIENT_PREFIX,
     MEDIADIVE_DESC_COLUMN,
     MEDIADIVE_ID_COLUMN,
     MEDIADIVE_LINK_COLUMN,
@@ -144,7 +144,7 @@ class MediaDiveTransform(Transform):
         elif data[CAS_RN_KEY] is not None:
             return CAS_RN_PREFIX + str(data[CAS_RN_KEY])
         else:
-            return MEDIADIVE_COMPOUND_PREFIX + id
+            return MEDIADIVE_INGREDIENT_PREFIX + id
 
     def download_yaml_and_get_json(
         self,
@@ -296,5 +296,10 @@ class MediaDiveTransform(Transform):
                     progress.update()
 
         drop_duplicates(self.output_node_file)
-        establish_transitive_relationship(self.output_edge_file)
-        # drop_duplicates(self.output_edge_file)
+        establish_transitive_relationship(
+            self.output_edge_file,
+            MEDIADIVE_MEDIUM_PREFIX,
+            MEDIADIVE_SOLUTION_PREFIX,
+            MEDIUM_TO_INGREDIENT_EDGE,
+            MEDIADIVE_INGREDIENT_PREFIX
+            )
