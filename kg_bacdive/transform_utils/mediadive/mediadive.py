@@ -72,10 +72,10 @@ from kg_bacdive.transform_utils.constants import (
     SOLUTIONS_KEY,
 )
 from kg_bacdive.transform_utils.transform import Transform
-from kg_bacdive.utils.pandas_utils import drop_duplicates
+from kg_bacdive.utils.pandas_utils import drop_duplicates, establish_transitive_relationship
 
 
-class MediaDiveDiveTransform(Transform):
+class MediaDiveTransform(Transform):
 
     """Template for how the transform class would be designed."""
 
@@ -296,4 +296,5 @@ class MediaDiveDiveTransform(Transform):
                     progress.update()
 
         drop_duplicates(self.output_node_file)
-        drop_duplicates(self.output_edge_file)
+        establish_transitive_relationship(self.output_edge_file)
+        # drop_duplicates(self.output_edge_file)
