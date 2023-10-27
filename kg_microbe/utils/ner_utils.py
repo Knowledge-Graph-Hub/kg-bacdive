@@ -7,7 +7,7 @@ import pandas as pd
 from oaklib import get_adapter
 from oaklib.datamodels.text_annotator import TextAnnotationConfiguration
 
-from kg_bacdive.transform_utils.constants import (
+from kg_microbe.transform_utils.constants import (
     END_COLUMN,
     MATCHES_WHOLE_TEXT_COLUMN,
     OBJECT_ALIASES_COLUMN,

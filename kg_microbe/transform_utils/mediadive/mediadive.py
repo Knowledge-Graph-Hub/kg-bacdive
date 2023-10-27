@@ -27,7 +27,7 @@ import yaml
 from oaklib import get_adapter
 from tqdm import tqdm
 
-from kg_bacdive.transform_utils.constants import (
+from kg_microbe.transform_utils.constants import (
     CAS_RN_KEY,
     CAS_RN_PREFIX,
     CHEBI_KEY,
@@ -71,8 +71,8 @@ from kg_bacdive.transform_utils.constants import (
     SOLUTIONS_COLUMN,
     SOLUTIONS_KEY,
 )
-from kg_bacdive.transform_utils.transform import Transform
-from kg_bacdive.utils.pandas_utils import drop_duplicates, establish_transitive_relationship
+from kg_microbe.transform_utils.transform import Transform
+from kg_microbe.utils.pandas_utils import drop_duplicates, establish_transitive_relationship
 
 
 class MediaDiveTransform(Transform):

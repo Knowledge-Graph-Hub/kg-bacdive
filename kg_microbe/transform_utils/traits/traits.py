@@ -9,7 +9,7 @@ import pandas as pd
 import yaml
 from oaklib.utilities.ner_utilities import get_exclusion_token_list
 
-from kg_bacdive.transform_utils.constants import (
+from kg_microbe.transform_utils.constants import (
     ACTUAL_TERM_KEY,
     BIOLOGICAL_PROCESS,
     CARBON_SUBSTRATE_CATEGORY,
@@ -48,9 +48,9 @@ from kg_bacdive.transform_utils.constants import (
     TROPHICALLY_INTERACTS_WITH,
     TYPE_COLUMN,
 )
-from kg_bacdive.transform_utils.transform import Transform
-from kg_bacdive.utils.ner_utils import annotate
-from kg_bacdive.utils.pandas_utils import drop_duplicates
+from kg_microbe.transform_utils.transform import Transform
+from kg_microbe.utils.ner_utils import annotate
+from kg_microbe.utils.pandas_utils import drop_duplicates
 
 OUTPUT_FILE_SUFFIX = "_ner.tsv"
 STOPWORDS_FN = "stopwords.txt"

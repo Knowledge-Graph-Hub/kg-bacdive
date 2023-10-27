@@ -4,8 +4,8 @@
   "checkout": null,
   "context": {
     "cookiecutter": {
-      "project_name": "kg-bacdive",
-      "__project_slug": "kg_bacdive",
+      "project_name": "kg-microbe",
+      "__project_slug": "kg_microbe",
       "project_description": "Knowledge graph construction for BacDive data",
       "min_python_version": "3.9",
       "full_name": "Harshad Hegde",

@@ -21,7 +21,7 @@ import yaml
 from oaklib import get_adapter
 from tqdm import tqdm
 
-from kg_bacdive.transform_utils.constants import (
+from kg_microbe.transform_utils.constants import (
     BACDIVE_API_BASE_URL,
     BACDIVE_ID_COLUMN,
     BACDIVE_MEDIUM_DICT,
@@ -60,8 +60,8 @@ from kg_bacdive.transform_utils.constants import (
     SPECIES,
     STRAIN,
 )
-from kg_bacdive.transform_utils.transform import Transform
-from kg_bacdive.utils.pandas_utils import drop_duplicates
+from kg_microbe.transform_utils.transform import Transform
+from kg_microbe.utils.pandas_utils import drop_duplicates
 
 
 class BacDiveTransform(Transform):

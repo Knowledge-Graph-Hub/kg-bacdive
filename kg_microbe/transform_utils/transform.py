@@ -5,7 +5,7 @@ from typing import Optional, Union
 
 import yaml
 
-from kg_bacdive.transform_utils.constants import (
+from kg_microbe.transform_utils.constants import (
     CATEGORY_COLUMN,
     DESCRIPTION_COLUMN,
     ID_COLUMN,

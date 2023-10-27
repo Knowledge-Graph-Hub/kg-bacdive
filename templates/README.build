@@ -1,10 +1,10 @@
-The files in this directory represent a build of the kg-bacdive knowledge graph.
+The files in this directory represent a build of the kg-microbe knowledge graph.
 
 These file include:
 	*	Jenkinsfile - the exact command run to produce this build of the KG
-	*	kg-bacdive.jnl.gz - a blazegraph journal that can be loaded to produce a Blazegraph endpoint
-	*	kg-bacdive.nt.gz- an ntriples/RDF version of the KG
-	*	kg-bacdive.tar.gz - a tar.gz file containing the KG in KGX TSV format (with 'merged-kg' within the name of both node and edge files)
+	*	kg-microbe.jnl.gz - a blazegraph journal that can be loaded to produce a Blazegraph endpoint
+	*	kg-microbe.nt.gz- an ntriples/RDF version of the KG
+	*	kg-microbe.tar.gz - a tar.gz file containing the KG in KGX TSV format (with 'merged-kg' within the name of both node and edge files)
 
 The subdirectories in this directory are:
 

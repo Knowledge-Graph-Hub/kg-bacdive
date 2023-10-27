@@ -1,1 +1,1 @@
-"""Tests for kg-bacdive."""
+"""Tests for kg-microbe."""
