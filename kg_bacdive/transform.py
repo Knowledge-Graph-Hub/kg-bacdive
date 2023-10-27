@@ -4,7 +4,7 @@ from pathlib import Path
 from typing import List, Optional
 
 from kg_bacdive.transform_utils.bacdive.bacdive import BacDiveTransform
-from kg_bacdive.transform_utils.mediadive.mediadive import MediaDiveDiveTransform
+from kg_bacdive.transform_utils.mediadive.mediadive import MediaDiveTransform
 from kg_bacdive.transform_utils.ontology.ontology_transform import ONTOLOGIES, OntologyTransform
 from kg_bacdive.transform_utils.traits.traits import TraitsTransform
 
@@ -19,7 +19,7 @@ DATA_SOURCES = {
     # "ProteinAtlasTransform": ProteinAtlasTransform,
     # "STRINGTransform": STRINGTransform,
     "BacDiveTransform": BacDiveTransform,
-    "MediaDiveDiveTransform": MediaDiveDiveTransform,
+    "MediaDiveTransform": MediaDiveTransform,
     "TraitsTransform": TraitsTransform,
 }
 

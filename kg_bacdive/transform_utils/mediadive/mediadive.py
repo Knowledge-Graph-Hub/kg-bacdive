@@ -43,9 +43,9 @@ from kg_bacdive.transform_utils.constants import (
     KEGG_KEY,
     KEGG_PREFIX,
     MEDIADIVE_COMPLEX_MEDIUM_COLUMN,
-    MEDIADIVE_COMPOUND_PREFIX,
     MEDIADIVE_DESC_COLUMN,
     MEDIADIVE_ID_COLUMN,
+    MEDIADIVE_INGREDIENT_PREFIX,
     MEDIADIVE_LINK_COLUMN,
     MEDIADIVE_MAX_PH_COLUMN,
     MEDIADIVE_MEDIUM_PREFIX,
@@ -72,10 +72,10 @@ from kg_bacdive.transform_utils.constants import (
     SOLUTIONS_KEY,
 )
 from kg_bacdive.transform_utils.transform import Transform
-from kg_bacdive.utils.pandas_utils import drop_duplicates
+from kg_bacdive.utils.pandas_utils import drop_duplicates, establish_transitive_relationship
 
 
-class MediaDiveDiveTransform(Transform):
+class MediaDiveTransform(Transform):
 
     """Template for how the transform class would be designed."""
 
@@ -144,7 +144,7 @@ class MediaDiveDiveTransform(Transform):
         elif data[CAS_RN_KEY] is not None:
             return CAS_RN_PREFIX + str(data[CAS_RN_KEY])
         else:
-            return MEDIADIVE_COMPOUND_PREFIX + id
+            return MEDIADIVE_INGREDIENT_PREFIX + id
 
     def download_yaml_and_get_json(
         self,
@@ -296,4 +296,10 @@ class MediaDiveDiveTransform(Transform):
                     progress.update()
 
         drop_duplicates(self.output_node_file)
-        drop_duplicates(self.output_edge_file)
+        establish_transitive_relationship(
+            self.output_edge_file,
+            MEDIADIVE_MEDIUM_PREFIX,
+            MEDIADIVE_SOLUTION_PREFIX,
+            MEDIUM_TO_INGREDIENT_EDGE,
+            MEDIADIVE_INGREDIENT_PREFIX,
+        )

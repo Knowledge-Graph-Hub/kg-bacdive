@@ -9,13 +9,13 @@ edge_stats:
         unknown:
           count: 36244
     biolink:has_part:
-      count: 84816
+      count: 102140
       provided_by:
         unknown:
-          count: 84816
+          count: 102140
       source:
         unknown:
-          count: 84816
+          count: 102140
     biolink:has_phenotype:
       count: 19727
       provided_by:
@@ -124,13 +124,13 @@ edge_stats:
         unknown:
           count: 2027
     biolink:ChemicalEntity-biolink:has_part-biolink:ChemicalEntity:
-      count: 84816
+      count: 102140
       provided_by:
         unknown:
-          count: 84816
+          count: 102140
       source:
         unknown:
-          count: 84816
+          count: 102140
     biolink:ChemicalEntity-biolink:has_part-biolink:ChemicalSubstance:
       count: 50254
       provided_by:
@@ -464,7 +464,7 @@ edge_stats:
   - unknown
   source:
   - unknown
-  total_edges: 1324137
+  total_edges: 1341461
 graph_name: kg-bacdive graph
 node_stats:
   count_by_category:
